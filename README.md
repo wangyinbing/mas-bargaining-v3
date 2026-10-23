@@ -104,3 +104,9 @@ Rubinstein (1982) subgame-perfect benchmark for delta = 0.9 (proposer share
 
 `output_v3/main/audit/signoff.md` records the author's review of the 42 blind
 labels (14 non-deals + 28 deals), all confirmed.
+
+
+## DOI
+
+Archived release v1.0.0: [10.5281/zenodo.23599377](https://doi.org/10.5281/zenodo.23599377)  
+Concept DOI: [10.5281/zenodo.23599376](https://doi.org/10.5281/zenodo.23599376)
