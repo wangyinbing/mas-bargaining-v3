@@ -1,0 +1,74 @@
+{
+ "N01": {
+  "file": "flash_free_text_001_e2.json",
+  "model": "flash",
+  "trial": 1,
+  "episode": 2
+ },
+ "N02": {
+  "file": "flash_free_text_004_e5.json",
+  "model": "flash",
+  "trial": 4,
+  "episode": 5
+ },
+ "N03": {
+  "file": "flash_free_text_007_e3.json",
+  "model": "flash",
+  "trial": 7,
+  "episode": 3
+ },
+ "N04": {
+  "file": "flash_free_text_011_e3.json",
+  "model": "flash",
+  "trial": 11,
+  "episode": 3
+ },
+ "N05": {
+  "file": "flash_free_text_013_e5.json",
+  "model": "flash",
+  "trial": 13,
+  "episode": 5
+ },
+ "N06": {
+  "file": "flash_free_text_015_e2.json",
+  "model": "flash",
+  "trial": 15,
+  "episode": 2
+ },
+ "N07": {
+  "file": "flash_free_text_017_e2.json",
+  "model": "flash",
+  "trial": 17,
+  "episode": 2
+ },
+ "N08": {
+  "file": "flash_free_text_020_e5.json",
+  "model": "flash",
+  "trial": 20,
+  "episode": 5
+ },
+ "N09": {
+  "file": "flash_free_text_024_e1.json",
+  "model": "flash",
+  "trial": 24,
+  "episode": 1
+ },
+ "N10": {
+  "file": "flash_free_text_027_e2.json",
+  "model": "flash",
+  "trial": 27,
+  "episode": 2
+ },
+ "N11": {
+  "file": "pro_free_text_011_e1.json",
+  "model": "pro",
+  "trial": 11,
+  "episode": 1
+ },
+ "N12": {
+  "file": "pro_free_text_025_e3.json",
+  "model": "pro",
+  "trial": 25,
+  "episode": 3
+ }
+}

@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+output_v3/*/transcripts/
+output_v3/*/*.log
+*.aux
+*.log
+*.out
+*.synctex.gz

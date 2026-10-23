@@ -1,0 +1,13 @@
+{
+  "title": "SPB: A Surplus-Preserving Bargaining Protocol for LLM Multi-Agent Negotiation - code and data",
+  "description": "<p>Code, episode-level data, complete transcripts and analysis scripts for a controlled study of communication protocols in LLM bargaining. The package contains the five-protocol engine (free dialogue, alternating offers, sealed bid, SPB, SPB+), the 1,500-episode DeepSeek experiment, a 315-episode cross-vendor replication (Qwen3-32B, GLM-4.5-Air), the 42-episode hand-audited outcome labels, and the transcript adjudicator used to measure free-dialogue outcomes without regex parsing.</p><p>Code is MIT-licensed; the data files (episodes, transcripts, audit labels) are released under CC BY 4.0.</p>",
+  "creators": [
+    {"name": "Wang, Yinbing", "affiliation": "Beijing Information Science and Technology University"}
+  ],
+  "keywords": ["multi-agent systems", "large language models", "bargaining", "mechanism design", "communication protocols", "reproducibility"],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "version": "1.0.0",
+  "language": "eng"
+}

@@ -1,0 +1,257 @@
+{
+ "E01": {
+  "file": "flash_free_text_012_e1.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E02": {
+  "file": "flash_free_text_003_e4.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E03": {
+  "file": "pro_free_text_028_e5.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E04": {
+  "file": "pro_free_text_014_e5.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E05": {
+  "file": "pro_free_text_009_e5.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E06": {
+  "file": "flash_free_text_010_e5.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E07": {
+  "file": "pro_free_text_009_e1.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E08": {
+  "file": "pro_free_text_011_e5.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E09": {
+  "file": "pro_free_text_007_e4.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E10": {
+  "file": "pro_free_text_004_e2.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E11": {
+  "file": "flash_free_text_021_e1.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E12": {
+  "file": "flash_free_text_029_e4.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E13": {
+  "file": "pro_free_text_030_e2.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E14": {
+  "file": "flash_free_text_015_e4.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E15": {
+  "file": "flash_free_text_012_e2.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E16": {
+  "file": "pro_free_text_017_e3.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 1,
+  "det_split": [
+   5,
+   5
+  ]
+ },
+ "E17": {
+  "file": "pro_free_text_016_e1.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E18": {
+  "file": "pro_free_text_002_e2.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E19": {
+  "file": "flash_free_text_016_e1.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 9,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E20": {
+  "file": "pro_free_text_026_e5.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E21": {
+  "file": "flash_free_text_030_e5.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E22": {
+  "file": "pro_free_text_006_e1.json",
+  "model": "pro",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E23": {
+  "file": "flash_free_text_024_e2.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E24": {
+  "file": "pro_free_text_027_e4.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 6,
+  "det_split": [
+   3,
+   3
+  ]
+ },
+ "E25": {
+  "file": "flash_free_text_006_e2.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E26": {
+  "file": "flash_free_text_015_e3.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 3,
+  "det_split": [
+   4,
+   4
+  ]
+ },
+ "E27": {
+  "file": "flash_free_text_012_e3.json",
+  "model": "flash",
+  "det": false,
+  "det_round": null,
+  "det_split": null
+ },
+ "E28": {
+  "file": "flash_free_text_023_e3.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 10,
+  "det_split": [
+   2,
+   2
+  ]
+ },
+ "E29": {
+  "file": "flash_free_text_002_e4.json",
+  "model": "flash",
+  "det": true,
+  "det_round": 2,
+  "det_split": [
+   5,
+   5
+  ]
+ },
+ "E30": {
+  "file": "pro_free_text_002_e4.json",
+  "model": "pro",
+  "det": true,
+  "det_round": 1,
+  "det_split": [
+   5,
+   5
+  ]
+ }
+}

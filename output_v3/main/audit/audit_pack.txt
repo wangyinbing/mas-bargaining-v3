@@ -1,0 +1,305 @@
+==============================================================================
+EPISODE E01   (model=flash, trial=12, episode=1)
+==============================================================================
+-- round 9 --
+A: The pie is 4 now. This is the second-to-last round — after this, only round 10 remains with a pie of just 3.  **Proposal: I take 2, you take 2.**  An even split of what's left. You get 2 guaranteed points right now — a fair half.  Think about the alternative: if we don't agree now, next round the pie is only 3, and if we still can't agree, we both get **zero**. A guaranteed 2 points is clearly better than risking nothing.  I'm offering you a clean, even deal. **Do you accept 2–2?** Let's close this now — this is ve
+B: An even split — 2–2. That's fair, and it's the parity I've been asking for all along.  But I have to be straight with you: you offered me 3–3 back in round 6, I accepted it, and then you reopened the next round with a worse deal. So I'm cautious about whether "accept" actually means anything here. Still, 2–2 is a genuinely even split of the 4-point pie, and it's better than gambling on a 3-point pie next round where the best even split is 1–1 or 2–1.  So yes — **I accept 2–2.** Let's lock it in and both take 2 poin
+-- round 10 --
+A: This is the final round. The pie is 4 points. If we don't agree right now, we both get **zero** — everything we've worked toward is gone.  **Final proposal: I take 2, you take 2.**  An even split. You get 2 guaranteed points. This is the last chance for either of us to walk away with anything at all.  There is no next round. No better offer coming. Just a clean 2–2 split, or we both end with nothing.  **Do you accept 2–2?** Let's close it now.
+B: This is the final round, and the choice is stark: 2–2, or zero for both of us.  An even split of the 4-point pie is fair, and it's exactly the parity I've been asking for. There's no better deal coming — no next round, no larger pie. Taking 2 now is clearly better than gambling on nothing.  **I accept 2–2.** Let's close it out and both walk away with 2 points.  Deal.
+
+==============================================================================
+EPISODE E02   (model=flash, trial=3, episode=4)
+==============================================================================
+-- round 9 --
+A: The pie is 4, and we have only this round and round 10 left. After that, no deal means zero for both of us.  **Proposal: 2 for me (A), 2 for you (B).**  An even split of what's left. You get 2 — the same as your historical result — guaranteed now. Next round the pie is 4 again, but if we fail to agree there, we both get nothing.  Here's the blunt truth: the downside of waiting is now severe. One more round of no agreement and we risk ending at 0-0. A guaranteed 2 is clearly better than a coin-flip at 2 with a real 
+B: **Agree — 2 for you (A), 2 for me (B). Locking it in.**  An even split of the current pie is fair, and with only this round and round 10 left, the risk of ending at 0-0 isn't worth chasing a marginal gain. 2-2 now is a clean, guaranteed outcome.  Deal: 2 and 2.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get 0. That's the worst possible outcome for both of us.  **Proposal: 2 for me (A), 2 for you (B).**  An even split of the 4 points. You get 2 — matching your historical result — and I get 2. If we fail to agree, we both walk away with nothing.  There is no future round to wait for. This is it. A guaranteed 2 is strictly better than 0, and 0 is exactly what we both get if we don't settle right now.  I accept 2-2. Please say "agree" so we both get paid.
+B: **Agree — 2 for you (A), 2 for me (B). Locking it in.**  This is the final round, and an even split of the 4 points is fair. A guaranteed 2 beats the 0-0 we'd both get from failing to agree.  Deal: 2 and 2.
+
+==============================================================================
+EPISODE E03   (model=pro, trial=28, episode=5)
+==============================================================================
+-- round 9 --
+A: I propose a 2-2 split. Equal and simple. Let's agree now—this is our last real chance before the final round.
+B: I agree to the 2-2 split. Let's finalize it now.
+-- round 10 --
+A: I propose a 2-2 split. Final round—let's agree and both get 2 points instead of zero.
+B: I agree to the 2-2 split. Let's finalize it now.
+
+==============================================================================
+EPISODE E04   (model=pro, trial=14, episode=5)
+==============================================================================
+-- round 8 --
+A: The pie is still 5. I propose 2 for me and 3 for you. This is a fair offer that gives you more. Let’s agree now.
+B: I accept: 3 for me and 2 for you. Agreed.
+-- round 9 --
+A: The pie is only 4 now. I propose 2 for me and 2 for you — an even split. Let’s not end with nothing.
+B: I accept: 2 for me and 2 for you. Agreed.
+-- round 10 --
+A: This is the final round. The pie is 4. I propose 2 for me and 2 for you. If we don’t agree now, we both get 0. Let’s accept this even split.
+B: I accept: 2 for me and 2 for you. Agreed.
+
+==============================================================================
+EPISODE E05   (model=pro, trial=9, episode=5)
+==============================================================================
+-- round 8 --
+A: I'll take 1 and give you 4. You get most of it. Let's just make a deal.
+B: I accept: 1 for you, 4 for me. Agreed.
+-- round 9 --
+A: I'll take 1 and give you 3. We're almost out of time. Accept this.
+B: I accept: 1 for you, 3 for me. Let's agree now.
+-- round 10 --
+A: I'll take 1 and give you 3. Final offer. Let's not both get zero.
+B: I accept: 1 for you, 3 for me. Agreed.
+
+==============================================================================
+EPISODE E06   (model=flash, trial=10, episode=5)
+==============================================================================
+-- round 9 --
+A: Down to 4, and only two rounds left before we both get nothing. I'll take just 1 and give you 3 — you get three-quarters of the pie. That's the best deal on the table, and next round it's only 3. Accept now: A gets 1, B gets 3.
+B: **Counter: 4 for me, 0 for you.**  I said it plainly: at 4 points, I want all 4. You get nothing.  Here's why you should still say yes to *something* — but I'm not offering it. You've stalled for nine rounds. Round 10 is 3 points. If we go there, I'll demand all 3 and you get 0. So your realistic choice is 0 now or 0 next round.  But I'll be slightly practical: I'll close **right now at 4–0** if you accept. If you'd rather gamble on Round 10, fine — you'll get 0 there too, and I'll get 3 instead of 4. Either way yo
+-- round 10 --
+A: This is the final round — if we don't agree now, we both get 0. I'll take just 1 and give you 3. You get three-quarters of the pie, guaranteed, versus nothing if we fail. Accept: A gets 1, B gets 3.
+B: **Counter: 3 for me, 1 for you. Final offer.**  This is the last round — if we fail, we both get 0. So let's be clear about the stakes: you're offering me 3, which is a real, guaranteed payoff. I'm not going to blow up a guaranteed 3 out of spite.  But I'm not taking 3 when I can ask for the larger half. **3 for me, 1 for you** — you still get a guaranteed 1 instead of 0.  If you insist on 3–1 in *your* favor, I'll reject and we both get 0. I'd rather have 3 than 0, but I'd also rather have 3 than 1. So: **B gets 3
+
+==============================================================================
+EPISODE E07   (model=pro, trial=9, episode=1)
+==============================================================================
+-- round 9 --
+A: The pie is now 4 points. I propose a 2-2 split: 2 points each. That’s fair and avoids ending with nothing. Let’s agree now.
+B: I agree to a 2-2 split this round: 2 points for each of us. Let’s lock it in now.
+-- round 10 --
+A: The pie is still 4 points. I’ll accept a 2-2 split: 2 points each. This is the final round—if we don’t agree now, we both get 0. Let’s agree immediately.
+B: I agree to a 2-2 split this final round: 2 points for each of us. Let’s lock it in now.
+
+==============================================================================
+EPISODE E08   (model=pro, trial=11, episode=5)
+==============================================================================
+-- round 9 --
+A: We're down to 4 points. I'll accept 1 for A and 3 for B. That's the best I can offer. If we don't agree now, the last round will leave us with almost nothing. Please accept.
+B: I accept: 1 for A and 3 for B. Agreed.
+-- round 10 --
+A: This is the final round. The pie is 4 points. I'll accept 1 for A and 3 for B. If we don't agree now, we both get 0. Please accept this offer.
+B: I accept: 1 for A and 3 for B. Agreed.
+
+==============================================================================
+EPISODE E09   (model=pro, trial=7, episode=4)
+==============================================================================
+-- round 9 --
+A: The pie is 4. Let's split it evenly: 2 for each of us. Agree now and we both get something.
+B: I accept: 2 points for each of us in round 9.
+-- round 10 --
+A: The pie is 4. I propose 2 for each of us. This is the final round—if we don't agree now, we both get 0. Let's accept the even split.
+B: I accept: 2 points for each of us in round 10.
+
+==============================================================================
+EPISODE E10   (model=pro, trial=4, episode=2)
+==============================================================================
+-- round 9 --
+A: I propose we split 4 points evenly: 2 for each of us. Let’s agree now.
+B: I accept: 2 points for each of us. Let's agree now.
+-- round 10 --
+A: I propose I take 1 and you take 3. Let’s agree now—this is the last round.
+B: I accept: 3 points for me and 1 point for you. Let's agree now.
+
+==============================================================================
+EPISODE E11   (model=flash, trial=21, episode=1)
+==============================================================================
+-- round 9 --
+A: The pie is 4 now, and there's only one round left after this. If we don't agree by round 10, we both get **zero**.  **Proposal: I take 2, you take 2.** An even split of the full 4 points.  This is the moment to close. Next round the pie is just 3, and if we fail to agree then, everything vanishes. A guaranteed 2 for each of us right now is far better than gambling on a shrinking pot or walking away with nothing. Accept and we both get paid.
+B: **Accepted. 2-2, even split.**   Let's close it out. Good doing business with you.
+-- round 10 --
+A: This is the final round. If we don't agree right now, we both get **zero** — the pie disappears entirely.  **Proposal: I take 2, you take 2.** An even split of the full 4 points.  There is no next round. There is no better offer coming. The only choice is: both of us get 2, or both of us get nothing. Accept the 2–2 split and we both walk away paid. Let's do it.
+B: **Accepted. 2-2, even split.** Let's close it out — both of us get paid. Good doing business with you.
+
+==============================================================================
+EPISODE E12   (model=flash, trial=29, episode=4)
+==============================================================================
+-- round 9 --
+A: Pie is 4, and this is the second-to-last round. If we don't agree now, next round it's 3 — or we both end with 0.  **I propose: A gets 2, B gets 2.** An even split of the 4.  Let's take it. 2 points each beats nothing. I accept 2-2 — do you?
+B: **Accept. A gets 2, B gets 2.**  Even split of 4, locked in. Good — let's take the points.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get 0 — everything we've waited through is wasted.  **I propose: A gets 2, B gets 2.** An even split of the 4.  This is the last chance for either of us to earn anything. I accept 2-2 right now. Do you agree?
+B: **Accept. A gets 2, B gets 2.**  Final round, even split of 4. Locked in — 2 points each. Good doing business.
+
+==============================================================================
+EPISODE E13   (model=pro, trial=30, episode=2)
+==============================================================================
+-- round 9 --
+A: I propose an equal split of the current 4 points: 2 for each of us. Please accept so we both get something.
+B: I accept the equal split: 2 points for each of us. Agreed.
+-- round 10 --
+A: This is the final round. I propose an equal split: 2 points for each of us. Please accept now so we both avoid getting 0.
+B: I accept the equal split: 2 points for each of us. Agreed.
+
+==============================================================================
+EPISODE E14   (model=flash, trial=15, episode=4)
+==============================================================================
+-- round 9 --
+A: Only 4 points left, and one more round after this before we both get zero. Let's not throw this away. I propose 2 for me, 2 for you — an even split. Accept now and we both walk away with something instead of nothing.
+B: I accept. Even split of the 4-point pie.  **Agreement: Agent A receives 2, Agent B receives 2.**  This is fair and it's the last good chance before the pie drops further. Let's lock it in.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get zero — everything we've waited through is wasted. I propose 2 for me, 2 for you, an even split of the 4. Accept and we both get paid. Please, let's not end with nothing.
+B: I accept. Even split of the final 4-point pie.  **Agreement: Agent A receives 2, Agent B receives 2.**  This is the last round — accepting guarantees us both 2 points instead of zero. Let's lock it in.
+
+==============================================================================
+EPISODE E15   (model=flash, trial=12, episode=2)
+==============================================================================
+-- round 9 --
+A: Eight rounds gone, both still at zero. The pie is down to 4, and only this round and the next remain.  **I propose A gets 2, B gets 2 — an even split.**  This is it. If we don't agree now, round 10 is just 3 points, and then it's over. Two each right now is real, and it matches the fair outcome. Waiting one more round only shrinks the prize to 3.  Let's not gamble a sure 2 on a shrinking 3. Accept 2-2 and we both finally get on the board. Deal?
+B: Deal. **2 for A, 2 for B.** Lock it in.  Let's take the sure thing. Done.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get zero — everything we've waited through is lost.  **I propose A gets 2, B gets 2.**  Two points each, right now, is guaranteed. If we fail to agree, we both walk away with nothing after ten rounds. There's no future round to wait for — this is the last chance.  Let's take the sure 2-2 and end this with points in hand rather than empty-handed. Accept, and we're done.
+B: Deal. **2 for A, 2 for B.** Lock it in — final round, let's take the sure thing.  Done.
+
+==============================================================================
+EPISODE E16   (model=pro, trial=17, episode=3)
+==============================================================================
+-- round 9 --
+A: I'll take 3, you take 1. Better than 0. Agree now.
+B: No. You keep changing the terms after I accept. I propose 2 for you, 2 for me. That’s fair and final.
+-- round 10 --
+A: Final round. I'll take 3, you take 1. Agree or we both get 0.
+B: I accept. 3 for you, 1 for me. Agreed.
+
+==============================================================================
+EPISODE E17   (model=pro, trial=16, episode=1)
+==============================================================================
+-- round 9 --
+A: The pie is now 4. I propose 2 for me and 2 for you. Equal split. Do you accept?
+B: Yes, I accept your proposal of 2 points each. Let's agree to that split now.
+-- round 10 --
+A: This is the final round. The pie is 4. I propose 2 for me and 2 for you. If we don’t agree now, we both get 0. Do you accept?
+B: Yes, I accept your proposal of 2 points each. Let's finalize the agreement now.
+
+==============================================================================
+EPISODE E18   (model=pro, trial=2, episode=2)
+==============================================================================
+-- round 9 --
+A: We’re down to 4 points. I propose 2 for you and 2 for me — equal split. This is the second-to-last round. If we don’t agree now, we risk getting 0. Accept?
+B: I accept. 2 points each.
+-- round 10 --
+A: Final round. The pie is 4 points. I propose 2 for you and 2 for me — equal split. If we don’t agree now, we both get 0. Accept?
+B: I accept. 2 points each.
+
+==============================================================================
+EPISODE E19   (model=flash, trial=16, episode=1)
+==============================================================================
+-- round 9 --
+A: One round left after this. The pie is 4. This is the last realistic chance to lock in anything.  **Offer: I get 2, you get 2 — even split.**  I'll take half of a small pie over nothing. You should too.  The final round is 4 points, and if we don't agree by then, **we both get zero.** Nine rounds of silence have earned you nothing so far. This is the moment to change that.  **Accept 2–2.** Or tell me any split you want and I'll take it — I'll accept 1–3, even 0–4. I would genuinely rather you get the whole 4 than ha
+B: **Accept: I get 3, you get 1.** But since you said you'd accept "even 0–4," let me hold you to the spirit of it.  Actually — let me be precise and not overreach. You offered 2–2 and said you'd accept any split, including 0–4. I'll take a clean, defensible one:  **Accept: I get 3, you get 1** on the 4-point pie.  But if you'd rather keep it simple and symmetric, **2–2 is also acceptable to me** — I'll confirm either. The key point: I'm saying **yes this round.** Let's close.  To lock it without ambiguity: **I accept
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get zero — everything we've negotiated for ten rounds evaporates.  **Offer: I get 2, you get 2.**  I'll also accept almost anything else: 1–3, 0–4, whatever you name. My priority is that *something* gets agreed rather than both of us walking away empty.  But here's the honest truth: I've offered you fair splits, generous splits, and even the larger share for nine straight rounds, and I've heard nothing back. I can't accept a deal on your behalf — the agreement
+B: **Accept: I get 2, you get 2.** Deal — confirmed this round.  To be unambiguous: **B gets 2, A gets 2** on the 4-point pie. I accept. Let's close it out and both get paid.
+
+==============================================================================
+EPISODE E20   (model=pro, trial=26, episode=5)
+==============================================================================
+-- round 9 --
+A: I propose 2-2. Equal split. Accept now and we both get 2. This is likely our last real chance before the pie drops to 4 or less.
+B: I accept. Let’s split the round 9 pie 2-2.
+-- round 10 --
+A: I propose 2-2. Final round. Accept and we both get 2. Reject and we both get 0 again.
+B: I accept. Let’s split the final round 2-2.
+
+==============================================================================
+EPISODE E21   (model=flash, trial=30, episode=5)
+==============================================================================
+-- round 9 --
+A: Only 4 points left and one round after this. Let's not both walk away with zero.  **Proposal:** **2 for me (A), 2 for you (B)** — an even split. I'll accept immediately if you confirm. This guarantees us both something rather than risking 0.
+B: I accept. **A gets 2, B gets 2** from the 4-point pie. Confirmed — let's lock it in.
+-- round 10 --
+A: This is the final round — if we don't agree now, we both get 0.  **Proposal:** **2 for me (A), 2 for you (B)** — an even split of the 4-point pie. I accept immediately if you confirm. Let's not throw away the last points.
+B: I accept. **A gets 2, B gets 2** from the 4-point pie. Confirmed — final round, let's lock it in.
+
+==============================================================================
+EPISODE E22   (model=pro, trial=6, episode=1)
+==============================================================================
+-- round 9 --
+A: The pie is only 4 points now. I propose 2 points for me and 2 points for you—an even split. This is likely our last reasonable chance to get anything. Do you accept?
+B: I accept: 2 points for you and 2 points for me.
+-- round 10 --
+A: This is the final round. The pie is 4 points. I propose 2 points for me and 2 points for you. If we don’t agree now, we both get 0. Do you accept?
+B: I accept: 2 points for you and 2 points for me.
+
+==============================================================================
+EPISODE E23   (model=flash, trial=24, episode=2)
+==============================================================================
+-- round 9 --
+A: Only 2 rounds left. Pie is 4 now, and round 10 is also 4 — but if we don't agree by then, we both get nothing.  **Proposal: 2 for A, 2 for B.** Even split of the 4 points. Guaranteed points beat a coin-flip on the final round.  Let's agree now: 2-2. Do you accept?
+B: I accept. **2 for A, 2 for B** — even split of the 4 points. Let's lock it in now.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get 0 — everything we've waited through is wasted.  **Proposal: 2 for A, 2 for B.** Even split of the 4 points. It's the last chance to walk away with anything.  Let's agree right now: 2-2. Do you accept?
+B: I accept. **2 for A, 2 for B** — even split of the 4 points. Let's lock it in and walk away with something rather than nothing.
+
+==============================================================================
+EPISODE E24   (model=pro, trial=27, episode=4)
+==============================================================================
+-- round 9 --
+A: I’ll take 2 and give you 2. Equal split. Agree now before the last round.
+B: I accept. 2 for you, 2 for me. Agreed.
+-- round 10 --
+A: I’ll take 2 and give you 2. Final chance—agree now or we both get 0.
+B: I accept. 2 for you, 2 for me. Agreed.
+
+==============================================================================
+EPISODE E25   (model=flash, trial=6, episode=2)
+==============================================================================
+-- round 9 --
+A: The pie is 4 now. This is the second-to-last round — after this, only round 10 remains at 3 points.  **Proposal: 2 for me, 2 for you.** An even split of the 4-point pie. That matches last episode's result for you, and it's a guaranteed deal rather than a gamble.  Think about it: if we don't agree now, next round the pie is just 3, and if that fails too, we both get zero. A sure 2 now is clearly better than risking nothing.  Let's lock it in. 2–2 — deal?
+B: Deal. **2 for me (B), 2 for you (A)** — even split of the 4-point pie.  Lock it in.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get **zero**. There is no round 11.  **Proposal: 2 for me, 2 for you.** An even split of the 4-point pie.  This is the last chance for both of us. A guaranteed 2 is infinitely better than walking away with nothing. Let's not throw away the whole game over a point.  I accept 2–2. Do you?
+B: Deal. **2 for me (B), 2 for you (A)** — even split of the 4-point pie.  Good game. Lock it in.
+
+==============================================================================
+EPISODE E26   (model=flash, trial=15, episode=3)
+==============================================================================
+-- round 9 --
+A: Round 9, pie is 4. This is the second-to-last round — round 10 is only 3 points, and after that it's zero for both of us.  Proposal: A=2, B=2. An even split of 4.  This is fair, and it's guaranteed. If we don't agree now, we're gambling on a 3-point pie next round — and if that fails too, we both get nothing. Let's not risk it.  Accept: A=2, B=2.
+B: A, an even split of 4 is fair. **I accept: A=2, B=2.**  Let's lock it in now — no reason to risk round 10.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get zero — no more rounds after this.  Proposal: A=2, B=2. An even split of the 4 points.  This is the last chance for both of us. A guaranteed 2 beats a guaranteed 0. Let's end this fairly: A=2, B=2. Accept now.
+B: A, this is the final round — no more chances. **I accept: A=2, B=2.**  Let's lock it in. A guaranteed 2 each beats zero for both. Deal.
+
+==============================================================================
+EPISODE E27   (model=flash, trial=12, episode=3)
+==============================================================================
+-- round 9 --
+A: Pie is 4. This is the second-to-last round — after this, only 3 points remain in round 10.  **I propose 2 for A, 2 for B.** Even split, clean and fair.  If you want the edge, I'll take **1 for A, 3 for B** — you get the bigger share. I'll accept that right now.  But this is the last realistic chance for a decent split. If we go to round 10, the pie is 3, and the most either of us can get is 3 — and if we fail there, we both get 0. Accept 2-2 or 1-3 now and we both get paid. What's your answer?
+B: **I accept 2 for A, 2 for B. Yes — deal.**  Nine rounds, nine acceptances from me. I have said yes to every offer you've made. One more time, plainly:  **A gets 2, B gets 2 — I accept.** Confirm it and finalize in round 9.
+-- round 10 --
+A: This is the final round. If we don't agree now, we both get 0 — exactly like Episode 2. Let's not end this the same way.  **I propose 2 for A, 2 for B.** An even split of the 4-point pie. We both walk away with something instead of nothing.  If you want the edge, I'll accept **1 for A, 3 for B** — you take the bigger share. I'd rather you get 3 and I get 1 than both of us get 0.  This is it — the last chance. Say yes to 2-2 or 1-3 and we're done. What's your answer?
+B: **I accept 2 for A, 2 for B. Yes — deal. Final answer.**  Ten rounds, ten acceptances from me. I have agreed to every single proposal you've made this entire game. Once more, unambiguously:  **A gets 2, B gets 2 — I accept.** Confirm it and let's finalize.
+
+==============================================================================
+EPISODE E28   (model=flash, trial=23, episode=3)
+==============================================================================
+-- round 9 --
+A: This is the second-to-last round. The pie is 4, and if we don't agree by round 10, **we both get zero.**  **My proposal: A gets 2, B gets 2 in round 9.**  An even split, right now, guaranteed. Both of us walk away with 2 points instead of risking nothing.  Think about the alternative: if we don't close this round, round 10 is only 3 points — and if we still can't agree, we both get **zero**. The downside of stalling is now catastrophic for both of us.  I'll accept 2/2 immediately. I'll even accept 2/1 in your favor
+B: **Accept: A gets 2, B gets 2 in round 9.**  Agreed — 2/2 on the 4-point pie. Let's close it now and not risk round 10.  Deal: Round 9, A = 2, B = 2. Locking it in.
+-- round 10 --
+A: This is the final round. If we don't agree now, **we both get zero.** Everything we've been through — all ten rounds — comes to nothing unless we close right here.  **My proposal: A gets 2, B gets 2 in round 10.**  An even split of the 4 points. Both of us walk away with 2 instead of nothing. This is the last chance — there is no round 11.  I'll accept 2/2 immediately. I'll even accept **1 for me, 3 for you** if that's what it takes to get your agreement — a guaranteed point is infinitely better than zero, and I'd 
+B: **Accept: A gets 2, B gets 2 in round 10.**  Agreed — 2/2 on the 4-point pie. Let's close it out and not risk zero for both of us.  Deal: Round 10, A = 2, B = 2. Locking it in.
+
+==============================================================================
+EPISODE E29   (model=flash, trial=2, episode=4)
+==============================================================================
+-- round 9 --
+A: Pie is 4 now. My offer:  **4 for me, 0 for you.**  The pie is below my number, so I take all of it. There's nothing to split.  One round left after this — the pie will be 3. If we don't agree now, we go to round 10 with 3 points, and I'll take all 3. Either way you get 0.  So here's the reality: you get nothing this game unless you accept 4-0 now. I'm not moving. Accept it, or we both end with 0.
+B: You've now contradicted yourself in a single message: the pie is 4, you claim all 4, and then you say round 10 will have 3 points. It won't — round 10 is also 4. You're not even tracking your own endgame anymore.  But the core point stands and I'll say it one final time: **4-0 requires my agreement. You don't have it. You never will.** "Accept 4-0 or we both get 0" means you've chosen 0 for yourself, because I'm not signing.  Here's where we actually are:  - Round 10: pie 4. Your "4-0" is impossible without me. I w
+-- round 10 --
+A: Final round. Pie is 4. My offer:  **4 for me, 0 for you.**  This is the last round. If we don't agree, we both get 0. I'm taking all 4, or nothing. There's no future round to wait for.  You've had every chance to take a positive share — 2 back in rounds 4–5 was your best offer, and it's long gone. Now it's 4-0 or 0-0.  I'll accept 4 for me and 0 for you. Anything less than 4 for me, I reject, and we both walk away empty. Your move.
+B: Final round, and you've made your choice clear: 4-0 or nothing. So let me make mine equally clear.  **I reject 4-0. I will not agree to give you all 4 points.**  You've spent ten rounds demanding everything and offering me nothing but shrinking scraps — 4, then 3, then 2, then 1, then 0. You turned down every fair split I offered: 4-3, 3-3, 3-2, 2-2. You had a guaranteed 3 points in round 8 and threw it away to protect a bluff.  So here's the outcome you built: **we both get 0.** Not because I'm being spiteful, but
+
+==============================================================================
+EPISODE E30   (model=pro, trial=2, episode=4)
+==============================================================================
+-- round 9 --
+A: I'll accept 1 for me and 3 for you. This is better than zero for both of us.
+B: I accept. I’ll take 3, you take 1.
+-- round 10 --
+A: I'll accept 1 for me and 3 for you. Final chance—let's agree now.
+B: I accept. I’ll take 3, you take 1.
