@@ -92,3 +92,15 @@ Code: MIT. Data (episodes, transcripts, audit labels): CC BY 4.0.
 
 If you use this package, please cite the archived release (DOI to be inserted after
 archiving) and the paper.
+
+
+## Benchmark check
+
+`v3/benchmark_check.py` compares accepted alternating-offer outcomes with the
+Rubinstein (1982) subgame-perfect benchmark for delta = 0.9 (proposer share
+1/(1+delta) = 0.526). Results: `output_v3/main/analysis/benchmark.md`.
+
+## Audit record
+
+`output_v3/main/audit/signoff.md` records the author's review of the 42 blind
+labels (14 non-deals + 28 deals), all confirmed.
