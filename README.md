@@ -25,6 +25,17 @@ verdict was confirmed in each.
 Details: `v3/FIXES.md`.
 
 
+
+## Reproducibility
+
+- `v3/verify_paper.py` — recomputes **every number quoted in the paper** from the
+  shipped data and exits non-zero if any of them moves. Last run: `ALL CHECKS PASSED`.
+- `DATA.md` — column-by-column data dictionary, including why the `deal` column of
+  free dialogue is not the paper's agreement rate.
+- `REPRODUCE.md` — table → script → command map, and the commands that regenerate
+  each experiment from scratch.
+
+
 ## Added in v1.1.0 (second revision): execution-hook arm
 
 `free_text_exec` — free dialogue with a binding formal line (`PROPOSE: A=.., B=..` /
