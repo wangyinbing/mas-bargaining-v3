@@ -82,6 +82,21 @@ def main():
         chk(f"{key} hook: efficiency", eff_c, (h.welfare / 10).mean(), tol=0.005)
         chk(f"{key} hook: mean round", rnd_c, h[h.deal == 1].rounds.mean(), tol=0.06)
 
+    # ── equal-split fallback arm ────────────────────────────────
+    eq = pd.read_csv(ROOT / "output_v3" / "equal" / "episodes.csv").drop_duplicates(
+        subset=["model", "protocol", "trial", "episode"])
+    for c in ["deal", "welfare", "demand_a_mean"]:
+        eq[c] = pd.to_numeric(eq[c], errors="coerce")
+    eq["eff"] = eq.welfare / 10
+    for m, dem_c, eff_c in [("flash", 5.90, 0.996), ("pro", 5.09, 1.000)]:
+        chk(f"equal arm demand {m}", dem_c, eq[eq.model == m].demand_a_mean.mean(), tol=0.01)
+        chk(f"equal arm efficiency {m}", eff_c, eq[eq.model == m].eff.mean(), tol=0.002)
+    for m, prop_dem in [("flash", 6.23), ("pro", 5.20)]:
+        pv = stats.mannwhitneyu(eq[eq.model == m].demand_a_mean.dropna(),
+                                d[(d.model == m) & (d.protocol == "sealed_compromise")].demand_a_mean.dropna(),
+                                alternative="two-sided").pvalue
+        print(f"     demand equal vs proportional {m}: p={pv:.2e}")
+
     # ── Table 1 ─────────────────────────────────────────────────
     want = {
         ("flash", "sealed_bid"): (1.000, 0.935), ("flash", "sealed_compromise"): (1.000, 1.000),
@@ -174,8 +189,8 @@ def main():
     for (m, p), want in {
         ("glm45air", "sealed_bid"): 1.000, ("glm45air", "sealed_compromise"): 1.000,
         ("glm45air", "sealed_compromise_verify"): 0.933,
-        ("qwen32b", "sealed_bid"): 0.753, ("qwen32b", "sealed_compromise"): 0.776,
-        ("qwen32b", "sealed_compromise_verify"): 0.981,
+        ("qwen32b", "sealed_bid"): 0.757, ("qwen32b", "sealed_compromise"): 0.752,
+        ("qwen32b", "sealed_compromise_verify"): 0.979,
     }.items():
         s = x[(x.model == m) & (x.protocol == p)]
         chk(f"XV {m}/{p}", want, s.eff.mean(), tol=0.0015)

@@ -25,6 +25,7 @@ if any check fails. Last run: **ALL CHECKS PASSED**.
 | Strict hook arm | `verify_paper.py`, section *hook arms* | `output_v3/free_exec/episodes.csv` |
 | Forgiving hook arm | `verify_paper.py`, section *hook arms* | `output_v3/free_loose/episodes.csv` |
 | Table 3 (cross-vendor) | `verify_paper.py`, section *cross-vendor* | `output_v3/xvendor30/episodes.csv` (rows with `status == "ok"`) |
+| Equal-split fallback arm | `verify_paper.py`, section *equal-split fallback arm* | `output_v3/equal/episodes.csv` |
 | δ sensitivity | `verify_paper.py`, section *delta sensitivity* | same episode table, recomputed at δ = 0.80/0.90/0.95 |
 | Learning slopes | `verify_paper.py`, section *learning slopes* | `episodes.csv`, regressed on `episode` |
 | Rubinstein benchmark | `v3/benchmark_check.py` | `output_v3/main/transcripts/*alternating_offers*.json` (`proposals[-1]`) |
@@ -45,6 +46,10 @@ python v3/run_v3.py --models flash pro --protocols free_text_exec --trials 30 --
 # forgiving execution hook (300 episodes)
 python v3/run_v3.py --models flash pro --protocols free_text_loose --trials 30 --episodes 5 \
   --workers 16 --rounds 10 --out output_v3/free_loose
+
+# equal-split fallback (300 episodes) — tests whether the drift is caused by the rule
+python v3/run_v3.py --models flash pro --protocols sealed_compromise_equal --trials 30 \
+  --episodes 5 --workers 12 --rounds 10 --out output_v3/equal
 
 # cross-vendor replication (Qwen3-32B, GLM-4.5-Air)
 python v3/run_v3.py --models qwen32b glm45air --protocols sealed_bid sealed_compromise \

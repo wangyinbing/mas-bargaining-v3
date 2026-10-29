@@ -42,6 +42,14 @@ Free dialogue with a binding execution hook.
 
 `deal` here **is** an executed deal (the hook fired).
 
+## `output_v3/equal/episodes.csv` — 300 episodes
+
+`sealed_compromise_equal`: identical to SPB except that the fallback ignores the
+demands and splits the pie equally, so a higher demand cannot raise the fallback
+share. Used in Section 6.5 to test whether demand inflation is caused by the rule
+or by the models. Demands still average 5.90 (flash) and 5.09 (pro), against 6.23
+and 5.20 under the proportional rule.
+
 ## `output_v3/xvendor30/episodes.csv` — 704 rows, 701 valid
 
 Qwen3-32B and GLM-4.5-Air, three sealed protocols, 19–26 trials × 5 episodes.

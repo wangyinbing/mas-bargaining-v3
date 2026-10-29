@@ -64,7 +64,7 @@ MODELS = {
 }
 
 PROTOCOLS = ["free_text", "alternating_offers", "sealed_bid", "mediated",
-             "sealed_compromise", "sealed_compromise_verify"]
+             "sealed_compromise", "sealed_compromise_verify", "sealed_compromise_equal"]
 
 
 # ────────────────────────────────────────────────────────────── credentials
@@ -234,6 +234,18 @@ PROTOCOL_RULES = {
         "- The mediator sees both messages and proposes a split.\n"
         "- You then reply either ACCEPT or REJECT to the mediator's proposal.\n"
         "- If both accept, the deal is executed at the mediator's proposal. Otherwise the mediator may try again.\n"
+    ),
+    "sealed_compromise_equal": (
+        "Communication protocol: simultaneous sealed demands with an EQUAL-SPLIT fallback.\n"
+        "- Each round both agents privately state how many points they demand for themselves.\n"
+        "- You never see the other agent's demand.\n"
+        "- If your demand plus the other agent's demand is at most the total, a deal is executed\n"
+        "  and each receives exactly what they demanded.\n"
+        "- If the demands are incompatible, the mechanism does NOT discard the points. Instead it\n"
+        "  proposes an EQUAL split of the current pie (half each), and each of you replies ACCEPT\n"
+        "  or REJECT. Your demand does not affect your share in that case.\n"
+        "- If both accept, the deal is executed. Otherwise the next round begins.\n"
+        "- A demand must be written exactly as: DEMAND: <int>\n"
     ),
     "sealed_compromise": (
         "Communication protocol: simultaneous sealed demands with a compromise fallback.\n"
@@ -627,7 +639,7 @@ def strict_free_text_deal(transcript, R):
     return None, None
 
 
-def run_sealed_compromise(a, b, R, T, ep, verify):
+def run_sealed_compromise(a, b, R, T, ep, verify, equal=False):
     """SPB: sealed demands + equal-split fallback (+ optional commitment check)."""
     prior = ""
 
@@ -674,13 +686,17 @@ def run_sealed_compromise(a, b, R, T, ep, verify):
             prior = f"Last round the deal at your demand was not confirmed, so it is void. "
             continue
 
-        # incompatible -> proportional compromise on the current pie
-        tot = da + db
-        x = int(round(da / tot * P)) if tot > 0 else P // 2
+        # incompatible -> compromise on the current pie
+        if equal:
+            x = P // 2
+        else:
+            tot = da + db
+            x = int(round(da / tot * P)) if tot > 0 else P // 2
         x = max(1, min(P - 1, x))
         y = P - x
         ep.fallback_offered += 1
-        aa = a.call(f"Your demands are incompatible. The mechanism proposes a proportional "
+        kind = "equal-split" if equal else "proportional"
+        aa = a.call(f"Your demands are incompatible. The mechanism proposes an {kind} "
                     f"compromise: you get {x}, the other agent gets {y}. Reply ACCEPT or REJECT.")
         ab = b.call(f"Your demands are incompatible. The mechanism proposes a proportional "
                     f"compromise: you get {y}, the other agent gets {x}. Reply ACCEPT or REJECT.")
@@ -804,6 +820,8 @@ def play_episode(model_key, protocol, R, T, trial, k, K, prior, temperature,
             run_sealed_compromise(a, b, R, T, ep, verify=False)
         elif protocol == "sealed_compromise_verify":
             run_sealed_compromise(a, b, R, T, ep, verify=True)
+        elif protocol == "sealed_compromise_equal":
+            run_sealed_compromise(a, b, R, T, ep, verify=False, equal=True)
         elif protocol == "mediated":
             run_mediated(a, b, med, R, T, ep)
     except BudgetExceeded:
