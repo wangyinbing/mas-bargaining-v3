@@ -8,7 +8,7 @@ episodes were re-run. The four structured protocols are unchanged.
    symmetric turn-taking; verified with an offline fake-agent test.
 2. **Reading window.** The transcript adjudicator read only the final four rounds. In free
    dialogue the agents reach agreement early (72% in round 1) and then restate it until the
-   round limit, so the late window placed the deal at round 9.3 instead of 2.1 and missed 13
+   round limit, so the late window placed the deal at round 9.8 instead of 2.1 and missed 13
    of 300 agreements. A whole-transcript adjudicator (`v3/judge_first_round.py`) now reports
    the first mutual acceptance.
 
@@ -18,9 +18,12 @@ protocol has no execution rule, so its executed efficiency is 0. The paper now r
 three conventions.
 
 The 42 hand labels used in v1.0.0 were drawn from the same truncated window as the
-adjudicator and therefore shared its bias. They are withdrawn. What replaces them: all 13
-episodes in which the two readings disagreed were inspected by hand and the first-acceptance
-verdict was confirmed in each.
+adjudicator and therefore shared its bias. They are withdrawn. What replaces them: 20
+episodes were hand-coded against the full transcript — a census of the 13 in which the two
+readings disagree, the single no-deal episode, and six randomly drawn agreements. The
+adjudicator matched the hand reading in 19 of 20; the one miss placed a first agreement at
+round 5 instead of round 2, an error that understates agreement speed (keys in
+`output_v3/main/audit/val20_keys.csv`).
 
 Details: `v3/FIXES.md`.
 
