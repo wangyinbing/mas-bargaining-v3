@@ -251,20 +251,20 @@ Fig.~\ref{fig:demand} plots the mean demand of Agent~A. In flash, the ordering i
 \subsection{Three conventions, three answers}
 \label{sec:measure}
 
-Because free dialogue has no execution event, its welfare is not a property of the conversation alone: it depends on what the analyst counts as a deal. We score the same 300 transcripts under three explicit conventions.
+Because free dialogue has no execution event, its welfare is not a property of the conversation alone: it depends on what the analyst counts as a deal. We report three operational readings: two conventions applied to the same 300 transcripts, and one separate arm in which the protocol does supply an execution rule.
 
 \begin{table}[H]
 \centering
-\caption{The same 300 free-dialogue episodes under three conventions. ``Executed'' counts only splits paid by a rule; free dialogue has no such rule. The two acceptance conventions differ only in whether the first or the last mutual acceptance is credited.}
+\caption{Free dialogue under three operational readings. The first two apply different conventions to the same 300 transcripts (first versus last mutual acceptance); the third is a separate 300-episode arm in which a formal PROPOSE/ACCEPT line is binding and executes on a match.}
 \label{tab:conventions}
 \small
 \begin{tabular}{@{}lccc@{}}
 \toprule
 Convention & Deal rate & Mean round & Efficiency \\
 \midrule
-Executed (protocol rule)        & 0.00  & --  & 0.000 \\
-Last mutual acceptance          & 0.95  & 9.3 & 0.388 \\
-First mutual acceptance         & 0.997 & 2.1 & 0.905 \\
+First mutual acceptance (convention)   & 0.997 & 2.1 & 0.905 \\
+Last mutual acceptance (convention)    & 0.95  & 9.3 & 0.388 \\
+Binding execution hook (separate arm)  & 0.42  & 6.3 & 0.262 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -277,29 +277,7 @@ The regex parser used in an earlier pilot recovers 91.7\% of the agreements at a
 
 The practical lesson is not ``use a better parser''. It is that the instrument defines the phenomenon. A study that credits the last acceptance reports 0.39 for a protocol that, on its own transcripts, achieves 0.91; a study that reads only the final rounds loses 4\% of the agreements entirely; and a study that asks the agents recovers two thirds of them, unevenly across roles. None of these numbers is wrong as arithmetic. They are answering different questions, and only one of them is about the system.
 
-\subsection{Does an execution hook rescue free dialogue?}
-\label{sec:hook}
-
-The zero in Table~\ref{tab:conventions} is a consequence of our design: free dialogue was defined without any rule that pays a split out. To see what the agents can do when such a rule exists, we ran a third arm (300 episodes) in which a formal line is binding. \texttt{PROPOSE: A=<int>, B=<int>} states a split; \texttt{ACCEPT: A=<int>, B=<int>} accepts the other agent's most recent proposal; a matching \texttt{ACCEPT} executes the deal immediately and ends the episode. Every episode used the formal syntax at least once, so the shortfall is not one of compliance with the format.
-
-\begin{table}[H]
-\centering
-\caption{Free dialogue under four regimes. The first row is definitional; the last two are analytical conventions applied to the same transcripts; the second row is a separate arm with a binding execution hook.}
-\label{tab:hook}
-\small
-\begin{tabular}{@{}lccc@{}}
-\toprule
-Regime & Deal rate & Mean round & Efficiency \\
-\midrule
-No execution rule (by construction)     & --    & --  & 0.000 \\
-Execution hook (binding PROPOSE/ACCEPT) & 0.42  & 6.3 & 0.262 \\
-Last mutual acceptance (convention)     & 0.95  & 9.3 & 0.388 \\
-First mutual acceptance (convention)    & 0.997 & 2.1 & 0.905 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The hook helps --- 42\% of episodes now close --- but it does not rescue the protocol. Deals arrive at round 6.3 rather than 2.1, and efficiency is 0.26, below even the late-window convention, because a binding \texttt{ACCEPT} is demanding: the agents must first converge on a split and then encode it identically. The larger model closes least often (27\% against 57\% in the smaller one), consistent with its longer and more strategic bargaining. In SPB, closing is not an act of compliance but the default path: an incompatible demand triggers the compromise automatically and the deal executes, without either agent having to decide to stop. That is the design lesson, and with this arm it is empirical rather than definitional.
+The zero that a strict reading would assign to free dialogue is a consequence of our design: the protocol was defined without any rule that pays a split out. To see what the agents can do when such a rule exists, we ran a third arm (300 episodes) in which a formal line is binding. \texttt{PROPOSE: A=<int>, B=<int>} states a split; \texttt{ACCEPT: A=<int>, B=<int>} accepts the other agent's most recent proposal; a matching \texttt{ACCEPT} executes the deal immediately and ends the episode. Every episode used the formal syntax at least once, so the shortfall is not one of compliance with the format. The hook helps --- 42\% of episodes close --- but it does not rescue the protocol. Deals arrive at round 6.3 rather than 2.1, and efficiency is 0.26, below even the late-window convention, because a binding \texttt{ACCEPT} is demanding: the agents must first converge on a split and then encode it identically. The larger model closes least often (27\% against 57\% in the smaller one), consistent with its longer and more strategic bargaining. In SPB, closing is not an act of compliance but the default path: an incompatible demand triggers the compromise automatically and the deal executes, without either agent having to decide to stop.
 
 \subsection{Cross-vendor replication}
 \label{sec:crossvendor}
@@ -342,7 +320,7 @@ A designer deploying SPB should therefore measure the compromise acceptance rate
 
 \subsection{What the results imply for designers}
 
-Four practical rules follow. (i) \emph{Design for execution, not for agreement.} In our data every protocol agrees in at least 87\% of episodes, so agreement is not a differentiator; what differs is whether the system acts on the agreement. A negotiation layer without an execution event cannot be evaluated, and should not be deployed: the agents will report success and nothing will happen. An execution hook is necessary but not sufficient --- with one, free dialogue still closes only 42\% of the time (Section~\ref{sec:hook}) --- so the closing move has to be the default path rather than an act of compliance.
+Four practical rules follow. (i) \emph{Design for execution, not for agreement.} In our data every protocol agrees in at least 87\% of episodes, so agreement is not a differentiator; what differs is whether the system acts on the agreement. A negotiation layer without an execution event cannot be evaluated, and should not be deployed: the agents will report success and nothing will happen. An execution hook is necessary but not sufficient --- with one, free dialogue still closes only 42\% of the time --- so the closing move has to be the default path rather than an act of compliance.
 
 (ii) \emph{Rank protocols by executed welfare, and state the convention.} For structured protocols the convention is fixed by the rule. For free-form dialogue it is not, and the same transcripts then support 0.39 or 0.91. Any paper that reports welfare for free-form negotiation without naming the convention is reporting an artefact of its own reading.
 
