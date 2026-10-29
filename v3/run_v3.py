@@ -302,14 +302,24 @@ def parse_ab(text):
 
 
 def parse_accept(text):
+    """ACCEPT / REJECT parser.
+
+    Negation-first: "I cannot accept" must not be read as acceptance.
+    (Hardened 2026-10-28; the archived structured runs contain no such reply.)
+    """
     t = text.strip().lower()
-    if re.search(r'\b(accept|accepted|agree|deal|yes)\b', t) and not re.search(r'\b(reject|no)\b', t):
-        return True
-    if re.search(r'\b(reject|decline|refuse|no)\b', t):
+    if re.fullmatch(r"\s*(no|nope|nay)\.?\s*", t):
         return False
-    if 'accept' in t or '接受' in t or '同意' in t:
+    if re.search(r"\b(not|n't|cannot|can't|won't|don't|unable|never)\b[^.]{0,25}"
+                 r"\b(accept|agree|deal|yes)\b", t):
+        return False
+    if re.search(r"\b(reject|rejected|decline|declined|refuse|refused)\b", t):
+        return False
+    if re.search(r"\b(accept|accepted|agree|agreed|deal|yes)\b", t):
         return True
-    if 'reject' in t or '拒绝' in t:
+    if '接受' in t or '同意' in t or '成交' in t:
+        return True
+    if '拒绝' in t or '不同意' in t:
         return False
     return None
 
@@ -346,13 +356,20 @@ def _ask_parsed(agent, prompt, parser, repair, retries=2):
 
 
 def run_free_text(a, b, R, T, ep):
-    # No protocol-level termination rule exists in free dialogue: the episode runs
-    # for T rounds. The legacy parser is applied as a *measurement overlay* only,
-    # so its early-hit behaviour can be compared with the elicitation outcome.
+    # Free dialogue: strict turn-taking A -> B -> A -> B, each agent sees the
+    # other's previous utterance. (Fixed 2026-10-28: A previously never received
+    # B's replies, which made A deaf after round 1.)
+    last_b = ""
     for r in range(1, T + 1):
         P = pie(R, r)
-        ma = a.call(f"Round {r}. The pie this round is {P} points. Say anything you want to the other agent.")
+        if last_b:
+            prompt_a = (f"Round {r}. The pie this round is {P} points. "
+                        f"Agent B says: \"{last_b}\"\nReply to Agent B.")
+        else:
+            prompt_a = f"Round {r}. The pie this round is {P} points. Say anything you want to the other agent."
+        ma = a.call(prompt_a)
         mb = b.call(f"Round {r}. The pie this round is {P} points. Agent A says: \"{ma}\"\nReply to Agent A.")
+        last_b = mb
         ep.log(round=r, a=ma, b=mb)
         ep.rounds = r
         hit = legacy_free_text_agreement(ma, mb)
@@ -435,11 +452,11 @@ def run_sealed(a, b, R, T, ep):
 
 def parse_confirm(text):
     t = text.strip().lower()
-    if re.search(r'\bconfirm(ed)?\b', t) and not re.search(r'\breject\b', t):
-        return True
+    if re.search(r"\b(not|n't|cannot|can't|won't|don't|unable)\b[^.]{0,25}\bconfirm", t):
+        return False
     if re.search(r'\breject|refuse|decline\b', t):
         return False
-    if 'confirm' in t:
+    if re.search(r'\bconfirm(ed|ation)?\b', t):
         return True
     return None
 
@@ -461,6 +478,16 @@ def _splits_in(text):
     return out
 
 
+
+_NEG_ACCEPT = re.compile(r"\b(not|no|n't|cannot|can't|won't|don't|unable|never)\b[^.]{0,25}"
+                         r"\b(accept|accepted|agree|agreed|deal|yes)\b")
+
+
+def _has_accept(text):
+    """Acceptance token present and not negated ("no deal", "cannot accept")."""
+    t = (text or "").lower()
+    return bool(_ACC.search(t)) and not bool(_NEG_ACCEPT.search(t))
+
 def strict_free_text_deal(transcript, R):
     """Deterministic detector for free dialogue.
 
@@ -474,7 +501,7 @@ def strict_free_text_deal(transcript, R):
         a, b = e.get("a"), e.get("b")
         if not a or not b:
             continue
-        if not _ACC.search(a.lower()) or not _ACC.search(b.lower()):
+        if not _has_accept(a) or not _has_accept(b):
             continue
         rnd = e.get("round") or 1
         P = pie(R, rnd)

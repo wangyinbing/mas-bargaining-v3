@@ -1,3 +1,29 @@
+# v1.1.0 — correction notice (2026-10-28)
+
+Two defects in the v1.0.0 free-dialogue arm were found and fixed; the 300 free-dialogue
+episodes were re-run. The four structured protocols are unchanged.
+
+1. **Context passing.** `run_free_text()` gave Agent B the message of Agent A, but never
+   gave Agent A the reply of Agent B. Agent A was effectively deaf after round 1. Fixed to
+   symmetric turn-taking; verified with an offline fake-agent test.
+2. **Reading window.** The transcript adjudicator read only the final four rounds. In free
+   dialogue the agents reach agreement early (72% in round 1) and then restate it until the
+   round limit, so the late window placed the deal at round 9.3 instead of 2.1 and missed 13
+   of 300 agreements. A whole-transcript adjudicator (`v3/judge_first_round.py`) now reports
+   the first mutual acceptance.
+
+Consequence for the results: free dialogue agrees in 99.7% of episodes and, if one credits
+the first acceptance, reaches an efficiency of 0.905; it executes nothing, because the
+protocol has no execution rule, so its executed efficiency is 0. The paper now reports all
+three conventions.
+
+The 42 hand labels used in v1.0.0 were drawn from the same truncated window as the
+adjudicator and therefore shared its bias. They are withdrawn. What replaces them: all 13
+episodes in which the two readings disagreed were inspected by hand and the first-acceptance
+verdict was confirmed in each.
+
+Details: `v3/FIXES.md`.
+
 # SPB: code and data
 
 Code and data for the manuscript **"SPB: A Surplus-Preserving Bargaining Protocol for

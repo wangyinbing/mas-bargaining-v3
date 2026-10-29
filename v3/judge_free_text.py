@@ -84,17 +84,24 @@ def main():
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--workers", type=int, default=8)
-    ap.add_argument("--out", default=str(ROOT / "output_v3" / "main" / "audit" / "judge.csv"))
+    ap.add_argument("--dir", default="output_v3/main", help="experiment output dir")
+    ap.add_argument("--out", default="", help="defaults to <dir>/audit/judge.csv")
     args = ap.parse_args()
 
     key = load_api_key()
     client = OpenAI(api_key=key, base_url="https://api.deepseek.com", timeout=120)
 
-    files = sorted(TDIR.glob("*free_text*.json"))
+    ddir = Path(args.dir)
+    if not ddir.is_absolute():
+        ddir = ROOT / ddir
+    tdir = ddir / "transcripts"
+    out_csv = Path(args.out) if args.out else ddir / "audit" / "judge.csv"
+    (ddir / "audit").mkdir(parents=True, exist_ok=True)
+    files = sorted(tdir.glob("*free_text*.json"))
     if args.limit:
         files = files[:args.limit]
 
-    jl = ROOT / "output_v3" / "main" / "audit" / "judge.jsonl"
+    jl = ddir / "audit" / "judge.jsonl"
     done = {}
     if jl.exists():
         for line in jl.read_text(encoding="utf-8").splitlines():
@@ -130,7 +137,7 @@ def main():
             if i % 50 == 0:
                 print(f"  {i}/{len(files)}", flush=True)
 
-    out = Path(args.out)
+    out = out_csv
     with out.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         w.writeheader()

@@ -1,0 +1,601 @@
+file,model,trial,episode,raw,first_round,split_a,split_b
+flash_free_text_001_e2.json,flash,1,2,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_002_e4.json,flash,2,4,"FIRST_ROUND: 10
+SPLIT: A=2, B=2",10,2.0,2.0
+flash_free_text_002_e1.json,flash,2,1,"FIRST_ROUND: 1
+SPLIT: A=6, B=4",1,6.0,4.0
+flash_free_text_001_e4.json,flash,1,4,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_002_e3.json,flash,2,3,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_001_e1.json,flash,1,1,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_003_e2.json,flash,3,2,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_002_e2.json,flash,2,2,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_003_e1.json,flash,3,1,"FIRST_ROUND: 5
+SPLIT: A=3.5, B=3.5",5,,
+flash_free_text_002_e5.json,flash,2,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_001_e3.json,flash,1,3,"FIRST_ROUND: 5
+SPLIT: A=3.5, B=3.5",5,,
+flash_free_text_004_e1.json,flash,4,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_001_e5.json,flash,1,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_003_e4.json,flash,3,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_004_e5.json,flash,4,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_004_e4.json,flash,4,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_003_e5.json,flash,3,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_004_e3.json,flash,4,3,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_004_e2.json,flash,4,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_003_e3.json,flash,3,3,"FIRST_ROUND: 10
+SPLIT: A=2, B=2",10,2.0,2.0
+flash_free_text_005_e2.json,flash,5,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_005_e1.json,flash,5,1,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_005_e4.json,flash,5,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_005_e5.json,flash,5,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_005_e3.json,flash,5,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_006_e3.json,flash,6,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_006_e1.json,flash,6,1,"FIRST_ROUND: 8
+SPLIT: A=2, B=3",8,2.0,3.0
+flash_free_text_006_e4.json,flash,6,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_006_e5.json,flash,6,5,"FIRST_ROUND: 8
+SPLIT: A=2.5, B=2.5",8,,
+flash_free_text_007_e1.json,flash,7,1,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_006_e2.json,flash,6,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_007_e2.json,flash,7,2,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_007_e3.json,flash,7,3,"FIRST_ROUND: 0
+SPLIT: A=0, B=0",0,0.0,0.0
+flash_free_text_007_e5.json,flash,7,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_007_e4.json,flash,7,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_008_e1.json,flash,8,1,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_008_e2.json,flash,8,2,"FIRST_ROUND: 8
+SPLIT: A=2, B=3",8,2.0,3.0
+flash_free_text_009_e1.json,flash,9,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_008_e5.json,flash,8,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_008_e3.json,flash,8,3,"FIRST_ROUND: 5
+SPLIT: A=3.5, B=3.5",5,,
+flash_free_text_008_e4.json,flash,8,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_010_e4.json,flash,10,4,"FIRST_ROUND: 5
+SPLIT: A=3, B=3",5,3.0,3.0
+flash_free_text_009_e3.json,flash,9,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_009_e2.json,flash,9,2,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_011_e1.json,flash,11,1,"FIRST_ROUND: 1
+SPLIT: A=6, B=4",1,6.0,4.0
+flash_free_text_011_e2.json,flash,11,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_010_e1.json,flash,10,1,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_010_e2.json,flash,10,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_010_e5.json,flash,10,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_011_e3.json,flash,11,3,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_009_e4.json,flash,9,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_010_e3.json,flash,10,3,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_009_e5.json,flash,9,5,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_011_e5.json,flash,11,5,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_013_e1.json,flash,13,1,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_012_e2.json,flash,12,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_012_e1.json,flash,12,1,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_013_e4.json,flash,13,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_011_e4.json,flash,11,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_012_e4.json,flash,12,4,"FIRST_ROUND: 4
+SPLIT: A=4, B=3",4,4.0,3.0
+flash_free_text_012_e3.json,flash,12,3,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_013_e2.json,flash,13,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_013_e3.json,flash,13,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_014_e3.json,flash,14,3,"FIRST_ROUND: 4
+SPLIT: A=4, B=3",4,4.0,3.0
+flash_free_text_013_e5.json,flash,13,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_012_e5.json,flash,12,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_014_e1.json,flash,14,1,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_014_e2.json,flash,14,2,"FIRST_ROUND: 2
+SPLIT: A=5, B=5",2,5.0,5.0
+flash_free_text_014_e4.json,flash,14,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_015_e2.json,flash,15,2,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_014_e5.json,flash,14,5,"FIRST_ROUND: 5
+SPLIT: A=3, B=3",5,3.0,3.0
+flash_free_text_015_e1.json,flash,15,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_015_e3.json,flash,15,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_015_e4.json,flash,15,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_017_e1.json,flash,17,1,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_016_e5.json,flash,16,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_016_e4.json,flash,16,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_016_e1.json,flash,16,1,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_016_e3.json,flash,16,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_015_e5.json,flash,15,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_016_e2.json,flash,16,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_017_e4.json,flash,17,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_018_e1.json,flash,18,1,"FIRST_ROUND: 9
+SPLIT: A=1, B=3",9,1.0,3.0
+flash_free_text_017_e2.json,flash,17,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_017_e3.json,flash,17,3,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_018_e2.json,flash,18,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_018_e5.json,flash,18,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_018_e3.json,flash,18,3,"FIRST_ROUND: 10
+SPLIT: A=2, B=2",10,2.0,2.0
+flash_free_text_019_e2.json,flash,19,2,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_017_e5.json,flash,17,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_019_e3.json,flash,19,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_019_e4.json,flash,19,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_018_e4.json,flash,18,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_020_e5.json,flash,20,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_019_e5.json,flash,19,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_020_e4.json,flash,20,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_020_e2.json,flash,20,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_021_e3.json,flash,21,3,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_020_e1.json,flash,20,1,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_021_e2.json,flash,21,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_019_e1.json,flash,19,1,"FIRST_ROUND: 8
+SPLIT: A=2, B=3",8,2.0,3.0
+flash_free_text_021_e1.json,flash,21,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_020_e3.json,flash,20,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_022_e2.json,flash,22,2,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_022_e4.json,flash,22,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_022_e3.json,flash,22,3,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_022_e5.json,flash,22,5,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_021_e5.json,flash,21,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_023_e1.json,flash,23,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_022_e1.json,flash,22,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_023_e2.json,flash,23,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_024_e1.json,flash,24,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_023_e5.json,flash,23,5,"FIRST_ROUND: 7
+SPLIT: A=3, B=2",7,3.0,2.0
+flash_free_text_023_e4.json,flash,23,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_023_e3.json,flash,23,3,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_024_e5.json,flash,24,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_024_e2.json,flash,24,2,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_025_e3.json,flash,25,3,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_024_e4.json,flash,24,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_021_e4.json,flash,21,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_026_e2.json,flash,26,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_026_e3.json,flash,26,3,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_025_e5.json,flash,25,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_025_e2.json,flash,25,2,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_024_e3.json,flash,24,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_027_e2.json,flash,27,2,"FIRST_ROUND: 2
+SPLIT: A=5, B=4",2,5.0,4.0
+flash_free_text_026_e1.json,flash,26,1,"FIRST_ROUND: 10
+SPLIT: A=2, B=2",10,2.0,2.0
+flash_free_text_025_e1.json,flash,25,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_026_e5.json,flash,26,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_027_e1.json,flash,27,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_027_e3.json,flash,27,3,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_025_e4.json,flash,25,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_026_e4.json,flash,26,4,"FIRST_ROUND: 4
+SPLIT: A=3, B=4",4,3.0,4.0
+flash_free_text_028_e1.json,flash,28,1,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_027_e4.json,flash,27,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_028_e2.json,flash,28,2,"FIRST_ROUND: 4
+SPLIT: A=2, B=5",4,2.0,5.0
+flash_free_text_028_e4.json,flash,28,4,"FIRST_ROUND: 9
+SPLIT: A=2, B=2",9,2.0,2.0
+flash_free_text_027_e5.json,flash,27,5,"FIRST_ROUND: 5
+SPLIT: A=3, B=4",5,3.0,4.0
+flash_free_text_028_e5.json,flash,28,5,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_029_e1.json,flash,29,1,"FIRST_ROUND: 6
+SPLIT: A=3, B=3",6,3.0,3.0
+flash_free_text_028_e3.json,flash,28,3,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_029_e2.json,flash,29,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_030_e1.json,flash,30,1,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_029_e4.json,flash,29,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_030_e4.json,flash,30,4,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+flash_free_text_030_e2.json,flash,30,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_030_e3.json,flash,30,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_001_e2.json,pro,1,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_001_e1.json,pro,1,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_029_e3.json,flash,29,3,"FIRST_ROUND: 5
+SPLIT: A=4, B=3",5,4.0,3.0
+flash_free_text_030_e5.json,flash,30,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_001_e3.json,pro,1,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_001_e5.json,pro,1,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+flash_free_text_029_e5.json,flash,29,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_002_e1.json,pro,2,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_002_e4.json,pro,2,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_002_e3.json,pro,2,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_003_e2.json,pro,3,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_003_e1.json,pro,3,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_002_e5.json,pro,2,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_003_e3.json,pro,3,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_003_e4.json,pro,3,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_002_e2.json,pro,2,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_001_e4.json,pro,1,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_003_e5.json,pro,3,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_005_e3.json,pro,5,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_004_e2.json,pro,4,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_004_e4.json,pro,4,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_004_e3.json,pro,4,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_004_e5.json,pro,4,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_005_e1.json,pro,5,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_005_e2.json,pro,5,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_004_e1.json,pro,4,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_006_e1.json,pro,6,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_006_e5.json,pro,6,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_006_e2.json,pro,6,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_005_e4.json,pro,5,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_007_e2.json,pro,7,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_008_e2.json,pro,8,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_007_e3.json,pro,7,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_005_e5.json,pro,5,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_007_e4.json,pro,7,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_006_e3.json,pro,6,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_008_e3.json,pro,8,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_006_e4.json,pro,6,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_007_e5.json,pro,7,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_008_e4.json,pro,8,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_008_e1.json,pro,8,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_007_e1.json,pro,7,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_009_e2.json,pro,9,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_009_e1.json,pro,9,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_010_e2.json,pro,10,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_009_e5.json,pro,9,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_010_e4.json,pro,10,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_011_e1.json,pro,11,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_010_e5.json,pro,10,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_008_e5.json,pro,8,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_010_e3.json,pro,10,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_009_e3.json,pro,9,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_009_e4.json,pro,9,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_010_e1.json,pro,10,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_011_e2.json,pro,11,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_011_e4.json,pro,11,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_012_e5.json,pro,12,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_012_e1.json,pro,12,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_011_e5.json,pro,11,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_011_e3.json,pro,11,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_012_e3.json,pro,12,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_013_e1.json,pro,13,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_012_e2.json,pro,12,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_012_e4.json,pro,12,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_013_e3.json,pro,13,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_014_e1.json,pro,14,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_013_e5.json,pro,13,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_013_e2.json,pro,13,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_014_e4.json,pro,14,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_014_e2.json,pro,14,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_014_e3.json,pro,14,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_015_e2.json,pro,15,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_015_e1.json,pro,15,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_014_e5.json,pro,14,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_013_e4.json,pro,13,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_016_e3.json,pro,16,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_016_e2.json,pro,16,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_015_e4.json,pro,15,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_016_e1.json,pro,16,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_016_e5.json,pro,16,5,"FIRST_ROUND: 3
+SPLIT: A=4, B=4",3,4.0,4.0
+pro_free_text_015_e3.json,pro,15,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_016_e4.json,pro,16,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_017_e3.json,pro,17,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_017_e2.json,pro,17,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_018_e1.json,pro,18,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_015_e5.json,pro,15,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_017_e1.json,pro,17,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_017_e5.json,pro,17,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_018_e3.json,pro,18,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_018_e4.json,pro,18,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_017_e4.json,pro,17,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_018_e2.json,pro,18,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_019_e1.json,pro,19,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_018_e5.json,pro,18,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_019_e4.json,pro,19,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_019_e2.json,pro,19,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_020_e1.json,pro,20,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_020_e4.json,pro,20,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_019_e3.json,pro,19,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_021_e1.json,pro,21,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_020_e2.json,pro,20,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_020_e3.json,pro,20,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_021_e2.json,pro,21,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_021_e5.json,pro,21,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_020_e5.json,pro,20,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_021_e3.json,pro,21,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_022_e1.json,pro,22,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_022_e5.json,pro,22,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_022_e4.json,pro,22,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_021_e4.json,pro,21,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_019_e5.json,pro,19,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_023_e2.json,pro,23,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_023_e3.json,pro,23,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_023_e1.json,pro,23,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_022_e2.json,pro,22,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_023_e4.json,pro,23,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_022_e3.json,pro,22,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_024_e4.json,pro,24,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_024_e5.json,pro,24,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_024_e1.json,pro,24,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_023_e5.json,pro,23,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_024_e3.json,pro,24,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_024_e2.json,pro,24,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_025_e1.json,pro,25,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_025_e5.json,pro,25,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_025_e2.json,pro,25,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_026_e1.json,pro,26,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_026_e2.json,pro,26,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_025_e4.json,pro,25,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_027_e1.json,pro,27,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_026_e3.json,pro,26,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_027_e2.json,pro,27,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_026_e5.json,pro,26,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_025_e3.json,pro,25,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_026_e4.json,pro,26,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_027_e4.json,pro,27,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_028_e1.json,pro,28,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_027_e3.json,pro,27,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_027_e5.json,pro,27,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_029_e3.json,pro,29,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_029_e4.json,pro,29,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_028_e2.json,pro,28,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_028_e3.json,pro,28,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_029_e2.json,pro,29,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_028_e5.json,pro,28,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_030_e1.json,pro,30,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_028_e4.json,pro,28,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_030_e5.json,pro,30,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_030_e2.json,pro,30,2,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_029_e1.json,pro,29,1,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_030_e3.json,pro,30,3,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_029_e5.json,pro,29,5,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0
+pro_free_text_030_e4.json,pro,30,4,"FIRST_ROUND: 1
+SPLIT: A=5, B=5",1,5.0,5.0

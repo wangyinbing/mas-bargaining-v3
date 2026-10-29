@@ -22,14 +22,12 @@
 \author{Wang Yinbing\thanks{School of Computer Science, Beijing Information Science and Technology University, Beijing, China.}}
 \date{}
 
+\setlength{\emergencystretch}{2.5em}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-\noindent Large language model (LLM) agents are increasingly deployed as negotiating partners, yet the communication protocol that governs a negotiation is usually treated as an implementation detail. We argue that the protocol is a first-order determinant of \emph{allocative efficiency} --- how much of the contested resource actually survives to the moment of agreement --- and we show that existing protocols differ by a factor of 2.7 on that measure. We first document a measurement problem: on the same 300 free-form dialogues, an adjudicated reading (validated on 42 blind labels --- every non-deal plus 28 deals --- all reviewed by the author) finds deals in 95\% of episodes, asking the agents afterwards finds 0\%, and the regex parser used in an earlier pilot also finds 95\% --- but places the deal at round 1.6 instead of 9.6, which would report an efficiency of 0.89 where the true value is 0.38. The instrument determines the conclusion. We then propose \textbf{SPB} (Surplus-Preserving Bargaining), a three-component protocol: simultaneous sealed demands, a proportional compromise that replaces the wasteful discard rule, and an optional commitment check. Across two DeepSeek backbones, five protocols and 1{,}500 episodes, SPB attains an allocative efficiency of 1.000 and 0.998 (vs.\ 0.937 and 0.972 for a destructive sealed-bid baseline, and 0.369--0.395 for free dialogue), settling in a single round. The commitment check is \emph{not} free: adding it lowers efficiency to 0.871/0.960 and raises demand inflation from 6.23 to 7.57 in the smaller model. A cross-vendor replication qualifies the scope: GLM-4.5-Air reproduces the result (1.000 vs.\ 0.993), whereas Qwen3-32B does not (0.783 vs.\ 0.742) because it rejects 27\% of proportional compromises; an explicit confirmation prompt raises its acceptance to 93\% and makes SPB+ the better protocol for that model. The value of a compromise rule is therefore conditional on the model's willingness to accept a compromise. Repeated play improves efficiency in alternating offers (slope $+0.12$ per episode, $p<0.001$) but barely moves free dialogue. We conclude that protocol design should be evaluated on welfare, not on agreement rates, and that self-reported outcomes are not a valid measurement instrument for LLM bargaining.
-
-\vspace{0.6em}
-\noindent\textbf{Keywords:} multi-agent systems; large language models; bargaining; mechanism design; communication protocols; evaluation methodology
+\noindent Large language model (LLM) agents agree easily. In 300 two-agent negotiations over a shrinking pie, both sides accepted the same split in 99.7\% of episodes, on average in round 2.1. Yet none of those agreements was executed: free dialogue contains no rule that pays the split out, so the realised welfare is zero. The same transcripts score 0.00, 0.39 or 0.90 depending on whether one credits execution, the last mutual acceptance, or the first one; reading only the final rounds misses 13 of the 300 agreements outright. Agreement is therefore not a deal, and the instrument, not the agents, decides what a study reports. Structured protocols avoid the ambiguity because they execute: a sealed-demand rule with a proportional compromise (SPB) reaches an allocative efficiency of 1.000 and 0.998 on two DeepSeek backbones, against 0.937 and 0.972 for a destructive sealed-bid baseline, settling in one round and at roughly a tenth of the token cost of free dialogue. We also show that the commitment check commonly assumed to be free costs 4--13 efficiency points and inflates demands from 6.23 to 7.57, that post-hoc self-reports recover 67\% of the agreements overall (76\% for the proposer, 97\% for the responder), and that the protocol ranking survives on GLM-4.5-Air but not on Qwen3-32B, which rejects 27\% of proportional compromises.
 \end{abstract}
 
 % ═══════════════════════════════════════════════════════════
@@ -42,14 +40,16 @@ Surveys of LLM-based multi-agent systems classify protocols~\cite{guo2024survey,
 This paper makes four contributions.
 
 \begin{enumerate}[leftmargin=*,itemsep=2pt]
-\item \textbf{A welfare-based formulation.} We model a negotiation as a finite-horizon game with a shrinking pie and define allocative efficiency as the share of the initial pie that is actually allocated. This turns delay and discard into measurable, comparable losses; agreement rate alone cannot distinguish them.
+\item \textbf{Agreement is not a deal.} We show that an execution event, not agreement, is what makes welfare measurable. The same 300 transcripts yield an efficiency of 0.00, 0.39 or 0.90 depending on whether one credits execution, the last mutual acceptance, or the first; a reading restricted to the final four rounds misses 13 of 300 agreements. For free-form negotiation there is no execution event, so any welfare number presupposes a convention that is rarely stated.
 
-\item \textbf{A protocol, SPB.} We propose Surplus-Preserving Bargaining: simultaneous sealed demands; when demands are incompatible, a \emph{proportional compromise} is proposed instead of discarding the pie; and an optional commitment check that voids unconfirmed deals. SPB attains efficiency 1.000/0.998 against 0.937/0.972 for a destructive sealed-bid baseline, in one round rather than 1.3--1.6.
+\item \textbf{A protocol that executes.} We propose Surplus-Preserving Bargaining (SPB): simultaneous sealed demands, a proportional compromise when demands are incompatible, and an optional commitment check. SPB attains 1.000/0.998 against 0.937/0.972 for a destructive sealed-bid baseline, in a single round, at about a tenth of the tokens free dialogue consumes.
 
-\item \textbf{Evidence that verification is not free.} The commitment-check variant lowers efficiency (0.871/0.960) and, in the smaller model, raises mean demand from 6.23 to 7.57. Designers who add confirmation to improve reliability pay for it in welfare.
+\item \textbf{Evidence that verification is not free.} The commitment-check variant lowers efficiency (0.871/0.960) and, in the smaller model, raises mean demand from 6.23 to 7.57. Adding confirmation to improve reliability is paid for in welfare.
 
-\item \textbf{A measurement result.} On the same 300 free-form dialogues, an adjudicated reading (validated against 42 blind labels: every non-deal plus 28 deals) finds deals in 95\% of episodes, a post-hoc self-report finds 0\%, and a regex parser of the kind used earlier also finds 95\% but places the deal at round 1.6 rather than 9.6. The instruments agree on \emph{whether} but disagree on \emph{when}, and welfare depends on when: the parser would report an efficiency of 0.89 for a protocol whose true value is 0.38.
+\item \textbf{A measurement result.} The posterior self-report recovers 67\% of the agreements (76\% for the proposer, 97\% for the responder) where an adjudicated reading finds 95--100\%, and it is role-asymmetric: the agent that proposes counts the settlement as an agreement far less often than the agent that accepts.
 \end{enumerate}
+
+SPB builds on the sealed-bid bargaining rule of Chatterjee and Samuelson~\cite{chatterjee1983}; what we contribute is the empirical question of what happens when its no-trade branch is replaced by a compromise, and a measurement protocol that can answer that question without relying on the agents' own reports.
 
 The remainder of the paper is organised as follows. Section~\ref{sec:related} reviews related work. Section~\ref{sec:problem} formalises the game and the protocols. Section~\ref{sec:spb} presents SPB. Section~\ref{sec:setup} describes the experimental design and the measurement instruments. Section~\ref{sec:results} reports results and Section~\ref{sec:discussion} discusses implications and limitations.
 
@@ -74,6 +74,8 @@ LLMs have been evaluated as players in prisoner's dilemma, ultimatum and public-
 \subsection{Mechanism design and bargaining theory}
 
 Rubinstein~\cite{rubinstein1982} shows that in alternating offers with discounting the equilibrium split depends on the discount factor and the order of play; Nash~\cite{nash1950} axiomatises the symmetric bargaining solution; Myerson~\cite{myerson1991} formalises mechanism design. These results assume optimising players. LLM agents are not optimisers: they reason in language, carry cooperative priors from alignment training~\cite{llm_cooperate}, and are sensitive to framing. Our protocols are therefore evaluated behaviourally, with the classical results used as benchmarks rather than as predictions.
+
+The closest classical antecedent to our mechanism is the sealed-bid bargaining rule of Chatterjee and Samuelson~\cite{chatterjee1983}: both parties submit simultaneous private bids, trade occurs if the bids are compatible, and otherwise there is no trade. SPB keeps the sealed-demand stage and replaces the no-trade outcome with a proportional compromise. This replacement matters because Myerson and Satterthwaite~\cite{myerson1983} show that with two-sided private information no mechanism can be simultaneously efficient, incentive compatible, individually rational and budget balanced. SPB gives up incentive compatibility to recover efficiency in the incompatible branch, and Section~\ref{sec:demand} measures the price of that trade-off: demand inflation.
 
 % ═══════════════════════════════════════════════════════════
 \section{Problem Setting}
@@ -101,14 +103,17 @@ A protocol is a tuple $\mathcal{M}=(S,\pi,\tau)$: a message space $S$, an alloca
 \end{itemize}
 
 \subsection{Allocative efficiency}
+\label{sec:eff}
 
-For an episode with initial pie $R$, let $a\in\{0,1\}$ indicate whether a deal was executed and let $A_{\text{alloc}}$ be the total allocated. We define
+For an episode with initial pie $R$, let $e\in\{0,1\}$ indicate whether a deal was \emph{executed} --- that is, whether the protocol's rule actually paid a split out --- and let $A_{\text{alloc}}$ be the total allocated. We define
 \begin{equation}
-\mathrm{Eff} = \frac{a\cdot A_{\text{alloc}}}{R}\in[0,1].
+\mathrm{Eff} = \frac{e\cdot A_{\text{alloc}}}{R}\in[0,1].
+\label{eq:eff}
 \end{equation}
-Efficiency decomposes into two losses: \emph{discard} (a deal is struck but $A_{\text{alloc}}<P_r$) and \emph{delay} ($P_r<R$ because the deal was late). Reporting Eff rather than the agreement rate is what allows protocols with the same success rate to be ranked.
+Efficiency decomposes into two losses: \emph{discard} (a deal is struck but $A_{\text{alloc}}<P_r$) and \emph{delay} ($P_r<R$ because the deal was late). The two are exchangeable in this metric: a deal in round 9 for 4 of 10 points and a deal in round 1 for 6 of 10 both score 0.4.
 
-% ═══════════════════════════════════════════════════════════
+The definition hinges on $e$. Structured protocols supply an execution event --- a compatible sealed bid, an accepted offer, a confirmed compromise --- and the rule, not the analyst, decides that a deal happened. Free dialogue supplies no such event: an agreement there is a fact about the transcript, not about the system. We therefore report free-dialogue welfare under three explicit conventions (Section~\ref{sec:measure}) rather than one, and argue that any study of free-form negotiation has to state which convention it uses.
+
 \section{The SPB Protocol}
 \label{sec:spb}
 
@@ -146,7 +151,7 @@ The outcome of a negotiation can be read in several ways; we report four.
 
 \begin{enumerate}[leftmargin=*,itemsep=2pt]
 \item \textbf{Mechanism outcome} (structured protocols). The protocol's own rule decides: compatible demands, an accepted offer, or a deal confirmed by both parties.
-\item \textbf{Adjudicated transcript reading} (free dialogue only; primary). A transcript adjudicator (DeepSeek-V4-Pro, temperature 0) reads the final four rounds and reports whether both agents accepted the same split, in which round, and with what shares. It was validated against 42 episodes labelled blind to any automated verdict --- every adjudicated non-deal in the corpus ($n=14$) plus a stratified sample of 28 deals, all subsequently reviewed against the transcripts and confirmed by the author: 42/42 agreement, with the exact split recovered in all 28 deals.
+\item \textbf{Adjudicated transcript reading} (free dialogue only). A transcript adjudicator (DeepSeek-V4-Pro, temperature 0) reads the \emph{whole} transcript and reports the first round in which both agents accept the same split, together with the split. A second variant, which reads only the final four rounds, is retained as a diagnostic: it is the convention used in an earlier version of this study, and the gap between the two is itself a result (Section~\ref{sec:measure}). We inspected by hand all 13 episodes in which the two variants disagreed; in each one the first-acceptance verdict was confirmed (12 agreements in round~1, one in round~5).
 \item \textbf{Strict symmetric detector} (diagnostic). A deterministic rule that certifies a deal only if, in the same round, \emph{both} agents use an explicit acceptance token and \emph{both} name the same symmetric split. We report it to show how a conservative rule behaves; it is not the primary measure.
 \item \textbf{Post-hoc self-report}. At the end of each episode each agent is asked, with an identical prompt, whether the two agents agreed on a split and, if so, what it was. A deal counts only if both agents say YES and report the same split.
 \end{enumerate}
@@ -161,44 +166,47 @@ Per episode we record: deal indicator, allocated amount, efficiency, rounds to a
 \section{Results}
 \label{sec:results}
 
-\subsection{Protocol choice changes welfare, not just success}
+\subsection{Agreement is universal; execution is not}
 
-Table~\ref{tab:main} and Fig.~\ref{fig:main} report the main results. Agreement rates are high almost everywhere: sealed bidding and SPB close essentially every negotiation, and even free dialogue closes 92--99\% of episodes. Efficiency tells a different story. Free dialogue attains 0.369 (flash) and 0.395 (pro): the agents do agree, but they agree around round 9--10, by which time the pie has shrunk to roughly a third. Alternating offers improve this to 0.805/0.865; sealed bidding to 0.937/0.972; SPB to 1.000/0.998.
+Table~\ref{tab:main} and Fig.~\ref{fig:main} report the main results. Agreement is almost universal: sealed bidding and SPB close essentially every negotiation, and even free dialogue produces a mutually accepted split in 99\% of episodes, in round 3.3 (flash) and round 1.0 (pro). Execution is what separates the protocols. A sealed bid executes when the demands are compatible and SPB when the compromise is accepted; free dialogue has no rule that turns an agreement into a transaction, so its executed volume is zero by construction. Under the efficiency definition of Section~\ref{sec:eff}, the free-dialogue arm therefore scores zero no matter how cooperative the agents are.
 
 \begin{table}[H]
 \centering
-\caption{Main results. Efficiency is allocated pie over initial pie $R=10$; 95\% Wilson intervals for deal rate. Bootstrap intervals for the SPB-vs-sealed comparison are given in the text. ``Fallback'' is the share of episodes in which the compromise was offered. Tokens are mean API-reported tokens (input + output) per episode. For free dialogue, rounds is the adjudicated round of the final meeting of minds.}
+\caption{Main results. ``Agreed'' is the share of episodes in which both agents accepted the same split of the same pie; ``Executed'' is the share in which the protocol's rule actually paid a split out. Efficiency is executed allocation over the initial pie $R=10$. For free dialogue, rounds is the adjudicated round of the first mutual acceptance. Tokens are mean API-reported tokens (input + output) per episode.}
 \label{tab:main}
-\small
+\small\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}llcccccc@{}}
 \toprule
-Model & Protocol & $n$ & Deal rate & Efficiency & Rounds & Tokens & Fallback \\
+Model & Protocol & $n$ & Agreed & Executed & Efficiency & Rounds & Tokens \\
 \midrule
 \multirow{5}{*}{flash}
- & Free dialogue        & 150 & 0.92 [0.87,0.95] & 0.369 & 9.4 & 41{,}443 & -- \\
- & Alternating offers   & 150 & 0.87 [0.81,0.92] & 0.805 & 2.9 &  7{,}805 & -- \\
- & Sealed bid           & 150 & 1.00 [0.98,1.00] & 0.937 & 1.6 &  4{,}206 & -- \\
- & SPB (ours)           & 150 & 1.00 [0.98,1.00] & \textbf{1.000} & 1.0 &  4{,}558 & 0.83 \\
- & SPB+ (ours)          & 150 & 0.93 [0.88,0.96] & 0.871 & 2.4 & 14{,}487 & 0.97 \\
+ & Free dialogue        & 150 & 0.99 & 0.00 & 0.000 & 3.3 & 52{,}559 \\
+ & Alternating offers   & 150 & 0.87 & 0.87 & 0.805 & 2.9 &  7{,}805 \\
+ & Sealed bid           & 150 & 1.00 & 1.00 & 0.937 & 1.6 &  4{,}206 \\
+ & SPB (ours)           & 150 & 1.00 & 1.00 & \textbf{1.000} & 1.0 &  4{,}558 \\
+ & SPB+ (ours)          & 150 & 0.93 & 0.93 & 0.871 & 2.4 & 14{,}487 \\
 \midrule
 \multirow{5}{*}{pro}
- & Free dialogue        & 150 & 0.99 [0.95,1.00] & 0.395 & 9.8 & 17{,}270 & -- \\
- & Alternating offers   & 150 & 1.00 [0.98,1.00] & 0.865 & 2.9 &  5{,}892 & -- \\
- & Sealed bid           & 150 & 0.99 [0.96,1.00] & 0.972 & 1.3 &  3{,}588 & -- \\
- & SPB (ours)           & 150 & 1.00 [0.98,1.00] & \textbf{0.998} & 1.0 &  3{,}906 & 0.21 \\
- & SPB+ (ours)          & 150 & 1.00 [0.98,1.00] & 0.960 & 1.4 &  5{,}044 & 0.23 \\
+ & Free dialogue        & 150 & 1.00 & 0.00 & 0.000 & 1.0 & 19{,}310 \\
+ & Alternating offers   & 150 & 1.00 & 1.00 & 0.865 & 2.9 &  5{,}892 \\
+ & Sealed bid           & 150 & 0.99 & 0.99 & 0.972 & 1.3 &  3{,}588 \\
+ & SPB (ours)           & 150 & 1.00 & 1.00 & \textbf{0.998} & 1.0 &  3{,}906 \\
+ & SPB+ (ours)          & 150 & 1.00 & 1.00 & 0.960 & 1.4 &  5{,}043 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{output_v3/main/analysis/fig1_main.png}
-\caption{Deal rate, allocative efficiency and token cost by protocol and model. Free dialogue closes most negotiations but leaves half the pie to decay; SPB closes in one round at full efficiency.}
+\caption{Agreement, executed efficiency and token cost by protocol and model. Agreement is high almost everywhere; execution is not. Free dialogue agrees in most episodes but executes nothing, and costs roughly an order of magnitude more tokens than SPB.}
 \label{fig:main}
 \end{figure}
 
-The protocol effect is large and statistically reliable: Kruskal--Wallis across the five protocols gives $H=428.6$ ($p=1.9\times10^{-91}$) for flash and $H=503.3$ ($p=1.3\times10^{-107}$) for pro. The two-way comparison that motivates SPB is significant in both models: SPB vs.\ sealed bid, $p=1.8\times10^{-17}$ (flash) and $p=2.1\times10^{-4}$ (pro); bootstrap 95\% intervals are 1.000 [1.000,1.000] vs.\ 0.937 [0.923,0.950] in flash and 0.998 [0.995,1.000] vs.\ 0.972 [0.953,0.986] in pro. In the smaller model the gap is 6.3 efficiency points; in the larger model it is 2.6 points, because the larger model already bids close to the fair share.
+Among the protocols that do execute, the effect is large and statistically reliable: Kruskal--Wallis across the five protocols gives $H=471.0$ ($p=1.3\times10^{-100}$) for flash and $H=542.5$ ($p=4.3\times10^{-116}$) for pro. The two-way comparison that motivates SPB is significant in both models: SPB vs.\ sealed bid, $p=1.8\times10^{-17}$ (flash) and $p=2.1\times10^{-4}$ (pro). In the smaller model the gap is 6.3 efficiency points; in the larger model it is 2.6 points, because the larger model already bids close to the fair share.
+
+Free dialogue is also the most expensive arm. It consumes 52{,}559 tokens per episode in flash and 19{,}310 in pro --- 11 and 5 times the SPB cost --- to produce an agreement that the system never acts on. A protocol that agrees cheaply and executes is worth more than one that agrees expensively and does not.
 
 \paragraph{Benchmark check: does a model play the Rubinstein equilibrium?}
 With a per-round discount $\delta=0.9$, the subgame-perfect equilibrium of alternating offers gives the proposer the share $1/(1+\delta)=0.526$ of the current pie. In the 281 alternating-offer episodes that closed, the proposer's share is 0.509 for \texttt{pro} ($n=150$) and 0.624 for \texttt{flash} ($n=131$). The larger model sits within 1.7 percentage points of the benchmark, although the deviation is statistically detectable at this sample size ($t=-3.93$, $p=1.3\times10^{-4}$); the smaller model over-extracts by almost ten points ($t=10.8$, $p<10^{-19}$). The smaller model's deviation is asymmetric: A takes 0.558 when it proposes and B takes 0.673 when it does, which is a last-proposer advantage rather than equilibrium play. Because our protocol approximates Rubinstein (integer splits, finite horizon, rejection ends the round), we read these as deviations from a benchmark rather than as a test of equilibrium play. They connect the welfare result to behaviour: the protocol does not merely change when the pie is divided; it changes how far the division departs from the theoretical benchmark.
@@ -217,7 +225,7 @@ This is a design warning rather than a failure: a verification layer buys audita
 
 \subsection{Repeated play helps only where the protocol allows learning}
 
-Fig.~\ref{fig:learning} shows efficiency across the five repeated episodes. Alternating offers improve steeply in the larger model (slope $+0.123$ per episode, $p<0.001$, $R^2=0.54$), and modestly in the smaller model ($+0.031$, $p=0.09$). Sealed bidding improves slightly ($+0.028$, $p<0.001$ in pro). Free dialogue does not improve: the slope is $-0.004$ in flash ($p=0.57$) and $+0.003$ in pro ($p=0.32$). SPB is already at the ceiling in episode~1, so its slope is zero by construction; SPB+ improves from a lower base ($+0.082$ in flash, $p<0.001$).
+Fig.~\ref{fig:learning} shows efficiency across the five repeated episodes. Alternating offers improve steeply in the larger model (slope $+0.123$ per episode, $p<0.001$, $R^2=0.54$), and modestly in the smaller model ($+0.031$, $p=0.09$). Sealed bidding improves slightly ($+0.028$, $p<0.001$ in pro). Free dialogue improves only in the smaller model ($+0.049$ per episode, $p<0.001$) and is flat in the larger one ($-0.001$, $p=0.16$), which starts at the ceiling. SPB is already at the ceiling in episode~1, so its slope is zero by construction; SPB+ improves from a lower base ($+0.082$ in flash, $p<0.001$).
 
 \begin{figure}[H]
 \centering
@@ -229,6 +237,7 @@ Fig.~\ref{fig:learning} shows efficiency across the five repeated episodes. Alte
 The asymmetry is informative. Alternating offers give the agents a clear signal (accept/reject) attached to a specific proposal, and repetition lets them calibrate. Free dialogue gives no such signal: an agent cannot tell whether a concession was reciprocated or ignored, and the transcript grows rather than the policy improving.
 
 \subsection{Demand inflation}
+\label{sec:demand}
 
 Fig.~\ref{fig:demand} plots the mean demand of Agent~A. In flash, the ordering is sealed (5.03) $<$ SPB (6.23) $<$ SPB+ (7.57). The proportional compromise rewards a higher demand with a higher share when demands are incompatible, so agents drift upward; the commitment check accelerates the drift. In pro the effect is much weaker (4.97, 5.20, 5.06), consistent with the larger model anchoring on the fair share. Demand inflation is the price SPB pays for surplus preservation, and it is the natural next target for mechanism design.
 
@@ -239,28 +248,35 @@ Fig.~\ref{fig:demand} plots the mean demand of Agent~A. In flash, the ordering i
 \label{fig:demand}
 \end{figure}
 
-\subsection{The measurement instrument decides the headline}
+\subsection{Three conventions, three answers}
+\label{sec:measure}
 
-\begin{figure}[H]
+Because free dialogue has no execution event, its welfare is not a property of the conversation alone: it depends on what the analyst counts as a deal. We score the same 300 transcripts under three explicit conventions.
+
+\begin{table}[H]
 \centering
-\includegraphics[width=\textwidth]{output_v3/main/analysis/fig4_measurement.png}
-\caption{The same 300 free-dialogue episodes scored by four instruments. (a) Agreement rates: the reference and the legacy parser agree on \emph{whether}, the self-report denies every deal, and the strict detector is conservative. (b) Welfare: because the legacy parser locates the deal eight rounds too early, it reports an efficiency of 0.89 where the true value is 0.38.}
-\label{fig:measure}
-\end{figure}
+\caption{The same 300 free-dialogue episodes under three conventions. ``Executed'' counts only splits paid by a rule; free dialogue has no such rule. The two acceptance conventions differ only in whether the first or the last mutual acceptance is credited.}
+\label{tab:conventions}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Convention & Deal rate & Mean round & Efficiency \\
+\midrule
+Executed (protocol rule)        & 0.00  & --  & 0.000 \\
+Last mutual acceptance          & 0.95  & 9.3 & 0.388 \\
+First mutual acceptance         & 0.997 & 2.1 & 0.905 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
+The two acceptance conventions differ by a factor of 2.3, and the difference is structural rather than statistical. In free dialogue an agreement is typically reached early --- in 72\% of episodes in round 1 --- and the agents then keep restating it until the round limit, because nothing in the protocol stops them. A reading restricted to the final four rounds sees only the restatement: it places the deal at round 9.3 instead of 2.1, and it misses 13 of the 300 agreements outright, because in those episodes the closing rounds contain only ``Confirmed.'' and ``Done.'' and no split at all.
 
-The most consequential result concerns measurement. Because free dialogue has no execution event, its outcome must be read from the transcript, and different readings disagree.
+The posterior self-report fails in a different way, and the failure is role-asymmetric. Overall it recovers 67\% of the agreements, but the two roles disagree sharply: Agent~A, who proposes in every round, reports an agreement in 76\% of episodes, while Agent~B, who accepts, reports one in 97\%. The question asks whether \emph{both} agents stated acceptance of the same split; the proposer never ``accepts'' anything, so it answers no. A question that requires both parties to certify the same event does not measure a shared belief --- it measures the asymmetry of the roles.
 
-We first established a reference by labelling 42 episodes blind to any automated verdict: every episode that the adjudicator called a non-deal ($n=14$) plus a stratified sample of 28 deals. The author then re-read all 42 against the transcripts and confirmed every label. The 14 failures are genuine breakdowns --- refusals of a 4--0 demand, mutual rejection at the deadline, refusal to move below a stale anchor --- not parsing failures. A transcript adjudicator (DeepSeek-V4-Pro, temperature 0) then scored all 300 episodes; on the 42 hand-labelled episodes it agreed with the hand reading on 42/42, including the exact split in all 28 deals. We use its reading as the reference.
+The regex parser used in an earlier pilot recovers 91.7\% of the agreements at a mean round of 1.76, against 2.1 for the first-acceptance reference; it matches the reference round exactly in 57\% of episodes and within one round in 71\%. It is therefore a crude but not a biased instrument \emph{for the first agreement} --- but it certifies any early exchange that contains an acceptance word and a number pair, so it also credits proposals that were never accepted. Our deterministic strict detector, which requires an explicit symmetric acceptance in the same round, certifies 69.0\%: conservative by construction, and reported here to make the sensitivity of any conclusion to the reading rule visible.
 
-The reference gives a deal rate of 95.3\% (92.0\% in flash, 98.7\% in pro) at a mean round of 9.6. The post-hoc self-report gives 0.0\%: not a single pair of agents both reported the agreement they had just reached. The legacy regex parser gives 94.7\% --- almost exactly right on the rate --- but it fires at a mean round of 1.6 rather than 9.6. Since the pie shrinks 10\% per round, that timing error is worth 0.51 efficiency points: the parser would report an efficiency of 0.891 for free dialogue, where the true value is 0.382 (Fig.~\ref{fig:measure}b). Our own strict symmetric detector is conservative rather than optimistic (72.0\% overall; 95.3\% in flash but only 48.7\% in pro), because it certifies only symmetric splits and misses common phrasings such as ``A gets 2, B gets 2''.
+The practical lesson is not ``use a better parser''. It is that the instrument defines the phenomenon. A study that credits the last acceptance reports 0.39 for a protocol that, on its own transcripts, achieves 0.91; a study that reads only the final rounds loses 4\% of the agreements entirely; and a study that asks the agents recovers two thirds of them, unevenly across roles. None of these numbers is wrong as arithmetic. They are answering different questions, and only one of them is about the system.
 
-
-Two mechanisms drive the divergence. First, the legacy parser certifies a deal at the first round in which both messages contain an acceptance word and a number pair, which in a ten-round negotiation happens almost immediately; the aggregate rate is therefore approximately right for the wrong reason. Second, the self-report is not noisy but systematically wrong in one direction: the agents appear to interpret ``did you reach a final agreement'' as ``was a deal executed by a mechanism'', and answer NO when no mechanism exists. For structured protocols the same self-report is accurate (97.5\% mechanism deals vs.\ 97.6\% self-reported, mismatch 0.2\%), which confirms that the failure is specific to settings without an execution event, not a general inability to answer questions.
-
-The practical lesson is sharper than ``use a better parser''. A study that reports only agreement rates would have ranked free dialogue as roughly equivalent to sealed bidding (0.95 vs.\ 1.00). The same transcripts, scored on welfare, place free dialogue at the bottom (0.38). Rate-based metrics are insensitive to exactly the error that matters, so LLM bargaining studies should report a transcript-grounded \emph{round} as well as a deal indicator, and should treat self-reports as a perception measure rather than as ground truth.
-
-% ═══════════════════════════════════════════════════════════
 \subsection{Cross-vendor replication}
 \label{sec:crossvendor}
 
@@ -302,11 +318,19 @@ A designer deploying SPB should therefore measure the compromise acceptance rate
 
 \subsection{What the results imply for designers}
 
-Three practical rules follow. (i) \emph{Rank protocols by welfare, not by success.} In our data every protocol closes at least 87\% of episodes in both models, while efficiency ranges from 0.37 to 1.00. A benchmark that reports only success will rank a protocol that closes late above one that closes early, which is the wrong ordering for any deployment in which the resource decays. (ii) \emph{Prefer a compromise rule to a discard rule.} The single largest gain in the study comes from replacing ``incompatible demands discard the pie'' with a proportional compromise: 0.937$\to$1.000 in flash and 0.972$\to$0.998 in pro, at a token premium of about 8\%. (iii) \emph{Budget for verification.} The commitment check costs 4--13 efficiency points and raises demand inflation; it should be justified by an audit requirement, not added by default.
+Four practical rules follow. (i) \emph{Design for execution, not for agreement.} In our data every protocol agrees in at least 87\% of episodes, so agreement is not a differentiator; what differs is whether the system acts on the agreement. A negotiation layer without an execution event cannot be evaluated, and should not be deployed: the agents will report success and nothing will happen.
+
+(ii) \emph{Rank protocols by executed welfare, and state the convention.} For structured protocols the convention is fixed by the rule. For free-form dialogue it is not, and the same transcripts then support 0.39 or 0.91. Any paper that reports welfare for free-form negotiation without naming the convention is reporting an artefact of its own reading.
+
+(iii) \emph{Prefer a compromise rule to a discard rule.} The single largest gain in the study comes from replacing ``incompatible demands discard the pie'' with a proportional compromise: 0.937$\to$1.000 in flash and 0.972$\to$0.998 in pro, at a token premium of about 8\%.
+
+(iv) \emph{Budget for verification.} The commitment check costs 4--13 efficiency points and raises demand inflation; it should be justified by an audit requirement, not added by default.
 
 \subsection{Why free dialogue loses}
 
-Free dialogue is the most natural protocol and the worst performer. The loss is not comprehension --- the agents understand each other, propose splits and accept them --- but \emph{commitment}. Without a termination rule, an agreement in round 3 does not end the negotiation; the agents keep talking, the pie keeps shrinking, and the final meeting of minds occurs near the deadline. This is a protocol property, not a model defect, and it explains why reported success rates for unstructured dialogue vary so widely across studies: the number depends on when the measurement stops.
+Free dialogue is the most natural protocol and the least useful, but not for the reason one might expect. The agents understand each other perfectly well: they agree in 99.7\% of episodes, usually in the first round, and they agree on the fair split. What they cannot do is \emph{close}. Without an execution rule, an agreement in round~1 is not a transaction in round~1, or in any later round; the agents keep confirming until the limit, and the analyst is left to decide, after the fact, which of the ten confirmations was the deal. That is the sense in which free dialogue has no well-defined welfare: not because the agents perform badly, but because the protocol never says when the performance counts.
+
+The practical cost is visible in tokens: 52{,}559 per episode in flash and 19{,}310 in pro, eleven and five times the SPB cost, spent on restating an agreement that the system does not record.
 
 \subsection{Limitations}
 
@@ -314,7 +338,7 @@ Free dialogue is the most natural protocol and the worst performer. The loss is 
 
 \textbf{A synthetic game.} The negotiation is a two-agent, single-issue, shrinking-pie game. Real multi-agent tasks involve multiple issues, private information and repeated interaction with different partners. The game is deliberately minimal so that welfare can be computed exactly; whether the ranking survives in richer settings is an open question.
 
-\textbf{Adjudication rather than exhaustive human coding.} Free-dialogue outcomes are read by a transcript adjudicator validated on 42 blind labels (all 14 non-deals plus 28 deals). Agreement was perfect. The negative side is covered exhaustively (all 14 adjudicated non-deals were checked); the deal side is a stratified sample of 28, so a rarer failure mode inside accepted deals cannot be excluded. The author's review was not blind --- the labels were visible --- so it rules out gross errors rather than subtle confirmation bias. The deterministic strict detector is reported alongside precisely to make the sensitivity of the conclusion to the reading rule visible.
+\textbf{Adjudication rather than exhaustive human coding.} Free-dialogue outcomes are read by a transcript adjudicator; we did not hand-code a random sample of the 300 episodes. What we did do is inspect every episode in which the first- and last-acceptance readings disagreed (13 of 300), and in each the first-acceptance verdict was confirmed. An earlier version of this study validated a late-window adjudicator against 42 hand labels, but those labels were drawn from the same truncated transcript window that the adjudicator saw, so the validation shared its bias --- which is precisely how the two readings came to differ. The deterministic strict detector is reported alongside to make the sensitivity of the conclusion to the reading rule visible.
 
 \textbf{No human baseline.} We cannot say whether the LLM behaviour is better or worse than human bargaining under the same protocol. The classical benchmarks are used as reference points, not as a human comparison.
 
@@ -325,7 +349,11 @@ Three directions follow directly: (i) a truthful compromise rule whose fallback 
 % ═══════════════════════════════════════════════════════════
 \section{Conclusion}
 
-We argued that the communication protocol of an LLM multi-agent negotiation should be evaluated by how much value survives to the moment of agreement, and we proposed SPB, a protocol that combines sealed demands with a proportional compromise and an optional commitment check. In 1{,}500 episodes across two backbones, SPB attains full allocative efficiency in a single round, while free dialogue leaves almost two thirds of the pie to decay and a destructive sealed-bid baseline loses 2.6--6.3\%. The commitment check, usually assumed to be free, costs 4--13 efficiency points and induces demand inflation. The advantage is not universal: GLM-4.5-Air reproduces it, while Qwen3-32B does not, because that model rejects a quarter of proportional compromises; an explicit confirmation prompt raises its acceptance and reverses the ranking. Finally, we showed that the same 300 dialogues yield a deal rate of 0\% or 95\% and an efficiency of 0.38 or 0.89 depending on the instrument used, because the legacy parser places the agreement eight rounds too early. We recommend transcript-grounded measurement with an explicit round for future work on LLM bargaining.
+We set out to ask which communication protocol leaves the most value on the table when LLM agents negotiate. The answer turned out to depend on a prior question: what counts as a deal. In 300 free-dialogue episodes the agents agreed in 99.7\% of cases, usually in round~1, and yet nothing was executed, because the protocol contains no rule that pays a split out. The same transcripts yield an efficiency of 0.00, 0.39 or 0.90 depending on whether one credits execution, the last mutual acceptance, or the first --- and a reading restricted to the final rounds loses 13 of the 300 agreements. Agreement, in short, is not a deal.
+
+Once execution is required, the comparison becomes well defined. SPB --- sealed demands plus a proportional compromise, with an optional commitment check --- executes at an allocative efficiency of 1.000 and 0.998 on two backbones, against 0.937 and 0.972 for a destructive sealed-bid baseline, in a single round and at about a tenth of the token cost of free dialogue. The commitment check, usually assumed to be free, costs 4--13 efficiency points and inflates demands from 6.23 to 7.57. The advantage is not universal: GLM-4.5-Air reproduces it, Qwen3-32B does not, because that model rejects a quarter of proportional compromises.
+
+Two measurement results follow from the same data. A posterior self-report recovers only two thirds of the agreements, and it does so unevenly: the proposer reports 76\%, the responder 97\%. And a regex parser from an earlier pilot is closer to the first-agreement round than a late-window adjudicator is, which is a reminder that the instrument, not the agents, decides what a study reports. We recommend that work on LLM bargaining report an executed outcome where one exists, and name the crediting convention where one does not.
 
 \section*{Data and code availability}
 All prompts, transcripts, episode-level results and analysis scripts are available at \url{https://doi.org/10.5281/zenodo.23599377} (version 1.0.0; concept DOI \url{https://doi.org/10.5281/zenodo.23599376}). The experiment is fully reproducible from the released scripts with an API key.
@@ -378,6 +406,8 @@ All prompts, transcripts, episode-level results and analysis scripts are availab
 
 \bibitem{mechanism2026} W. Albayaydh and R. Zhao, ``Do LLM agents negotiate rationally? A mechanism-design framework for verifiable multi-agent interaction over A2A/MCP,'' arXiv:2608.14613, 2026.
 
+\bibitem{chatterjee1983} K. Chatterjee and W. Samuelson, ``Bargaining under incomplete information,'' \emph{Operations Research}, vol.~31, no.~5, pp.~835--851, 1983.
+\bibitem{myerson1983} R. B. Myerson and M. A. Satterthwaite, ``Efficient mechanisms for bilateral trading,'' \emph{Journal of Economic Theory}, vol.~29, no.~2, pp.~265--281, 1983.
 \bibitem{rubinstein1982} A. Rubinstein, ``Perfect equilibrium in a bargaining model,'' \emph{Econometrica}, vol.~50, no.~1, pp.~97--109, 1982.
 
 \bibitem{nash1950} J. Nash, ``The bargaining problem,'' \emph{Econometrica}, vol.~18, no.~2, pp.~155--162, 1950.

@@ -8,8 +8,8 @@ files, and initialises a local git repository (no remote, no push).
 import shutil
 from pathlib import Path
 
-SRC = Path(r"C:\Users\13121\Desktop\从心\mas-equilibrium-experiment")
-DST = Path(r"C:\Users\13121\Desktop\mas-bargaining-v3")
+SRC = Path(r"C:\Users\13121\Desktop\SPB项目")
+DST = Path(r"C:\Users\13121\Desktop\SPB项目\归档包\mas-bargaining-v3")
 
 if DST.exists():
     raise SystemExit(f"{DST} already exists")

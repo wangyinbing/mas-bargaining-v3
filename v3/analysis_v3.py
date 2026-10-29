@@ -80,6 +80,9 @@ def load(d):
             df["legacy_round"].apply(lambda r: max(1, int(round(R_DEFAULT * 0.9 ** (r - 1)))) if r and r > 0 else 0) / R_DEFAULT,
             0.0)
 
+    # Executed welfare: free dialogue has no execution rule, so its executed
+    # efficiency is zero by construction (agreement is reported separately).
+    df.loc[df.protocol == "free_text", "welfare"] = 0.0
     df["eff"] = df["welfare"] / R_DEFAULT
     df["tokens"] = df["tokens_in"] + df["tokens_out"]
     df["proto"] = pd.Categorical(df["protocol"], ORDER, ordered=True)
