@@ -27,7 +27,7 @@
 \maketitle
 
 \begin{abstract}
-\noindent Large language model (LLM) agents agree easily. In 300 two-agent negotiations over a shrinking pie, both sides accepted the same split in 99.7\% of episodes, on average in round 2.1. Yet none of those agreements was executed: free dialogue contains no rule that pays the split out, so the realised welfare is zero. The same transcripts score 0.00, 0.39 or 0.90 depending on whether one credits execution, the last mutual acceptance, or the first one; reading only the final rounds misses 13 of the 300 agreements outright. Agreement is therefore not a deal, and the instrument, not the agents, decides what a study reports. Structured protocols avoid the ambiguity because they execute: a sealed-demand rule with a proportional compromise (SPB) reaches an allocative efficiency of 1.000 and 0.998 on two DeepSeek backbones, against 0.937 and 0.972 for a destructive sealed-bid baseline, settling in one round and at roughly a tenth of the token cost of free dialogue. We also show that the commitment check commonly assumed to be free costs 4--13 efficiency points and inflates demands from 6.23 to 7.57, that post-hoc self-reports recover 67\% of the agreements overall (76\% for the proposer, 97\% for the responder), and that the protocol ranking survives on GLM-4.5-Air but not on Qwen3-32B, which rejects 27\% of proportional compromises.
+\noindent Large language model (LLM) agents agree easily. In 300 two-agent negotiations over a shrinking pie, both sides accepted the same split in 99.7\% of episodes, on average in round 2.1. Yet none of those agreements was executed: free dialogue contains no rule that pays the split out. The same transcripts score 0.00, 0.39 or 0.90 depending on whether one credits execution, the last mutual acceptance, or the first one; reading only the final rounds misses 13 of the 300 agreements. Agreement is therefore not a deal. Giving free dialogue a minimal execution hook --- a formal PROPOSE/ACCEPT line that executes on a match --- raises the deal rate to 42\% but still closes at round 6.2 with an efficiency of 0.26: the hook is necessary but not sufficient. Structured protocols avoid the problem because execution is the default path: a sealed-demand rule with a proportional compromise (SPB) reaches 1.000 and 0.998 on two DeepSeek backbones, against 0.937 and 0.972 for a destructive sealed-bid baseline, in one round and at roughly a tenth of the token cost. The commitment check commonly assumed to be free costs 4--13 efficiency points and inflates demands from 6.23 to 7.57; post-hoc self-reports recover 67\% of the agreements (76\% proposer, 97\% responder); the ranking survives on GLM-4.5-Air but not on Qwen3-32B, which rejects 27\% of proportional compromises.
 \end{abstract}
 
 % ═══════════════════════════════════════════════════════════
@@ -277,6 +277,30 @@ The regex parser used in an earlier pilot recovers 91.7\% of the agreements at a
 
 The practical lesson is not ``use a better parser''. It is that the instrument defines the phenomenon. A study that credits the last acceptance reports 0.39 for a protocol that, on its own transcripts, achieves 0.91; a study that reads only the final rounds loses 4\% of the agreements entirely; and a study that asks the agents recovers two thirds of them, unevenly across roles. None of these numbers is wrong as arithmetic. They are answering different questions, and only one of them is about the system.
 
+\subsection{Does an execution hook rescue free dialogue?}
+\label{sec:hook}
+
+The zero in Table~\ref{tab:conventions} is a consequence of our design: free dialogue was defined without any rule that pays a split out. To see what the agents can do when such a rule exists, we ran a third arm (300 episodes) in which a formal line is binding. \texttt{PROPOSE: A=<int>, B=<int>} states a split; \texttt{ACCEPT: A=<int>, B=<int>} accepts the other agent's most recent proposal; a matching \texttt{ACCEPT} executes the deal immediately and ends the episode. Every episode used the formal syntax at least once, so the shortfall is not one of compliance with the format.
+
+\begin{table}[H]
+\centering
+\caption{Free dialogue under four regimes. The first row is definitional; the last two are analytical conventions applied to the same transcripts; the second row is a separate arm with a binding execution hook.}
+\label{tab:hook}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Regime & Deal rate & Mean round & Efficiency \\
+\midrule
+No execution rule (by construction)     & --    & --  & 0.000 \\
+Execution hook (binding PROPOSE/ACCEPT) & 0.42  & 6.3 & 0.262 \\
+Last mutual acceptance (convention)     & 0.95  & 9.3 & 0.388 \\
+First mutual acceptance (convention)    & 0.997 & 2.1 & 0.905 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The hook helps --- 42\% of episodes now close --- but it does not rescue the protocol. Deals arrive at round 6.3 rather than 2.1, and efficiency is 0.26, below even the late-window convention, because a binding \texttt{ACCEPT} is demanding: the agents must first converge on a split and then encode it identically. The larger model closes least often (27\% against 57\% in the smaller one), consistent with its longer and more strategic bargaining. In SPB, closing is not an act of compliance but the default path: an incompatible demand triggers the compromise automatically and the deal executes, without either agent having to decide to stop. That is the design lesson, and with this arm it is empirical rather than definitional.
+
 \subsection{Cross-vendor replication}
 \label{sec:crossvendor}
 
@@ -318,7 +342,7 @@ A designer deploying SPB should therefore measure the compromise acceptance rate
 
 \subsection{What the results imply for designers}
 
-Four practical rules follow. (i) \emph{Design for execution, not for agreement.} In our data every protocol agrees in at least 87\% of episodes, so agreement is not a differentiator; what differs is whether the system acts on the agreement. A negotiation layer without an execution event cannot be evaluated, and should not be deployed: the agents will report success and nothing will happen.
+Four practical rules follow. (i) \emph{Design for execution, not for agreement.} In our data every protocol agrees in at least 87\% of episodes, so agreement is not a differentiator; what differs is whether the system acts on the agreement. A negotiation layer without an execution event cannot be evaluated, and should not be deployed: the agents will report success and nothing will happen. An execution hook is necessary but not sufficient --- with one, free dialogue still closes only 42\% of the time (Section~\ref{sec:hook}) --- so the closing move has to be the default path rather than an act of compliance.
 
 (ii) \emph{Rank protocols by executed welfare, and state the convention.} For structured protocols the convention is fixed by the rule. For free-form dialogue it is not, and the same transcripts then support 0.39 or 0.91. Any paper that reports welfare for free-form negotiation without naming the convention is reporting an artefact of its own reading.
 
@@ -353,7 +377,7 @@ We set out to ask which communication protocol leaves the most value on the tabl
 
 Once execution is required, the comparison becomes well defined. SPB --- sealed demands plus a proportional compromise, with an optional commitment check --- executes at an allocative efficiency of 1.000 and 0.998 on two backbones, against 0.937 and 0.972 for a destructive sealed-bid baseline, in a single round and at about a tenth of the token cost of free dialogue. The commitment check, usually assumed to be free, costs 4--13 efficiency points and inflates demands from 6.23 to 7.57. The advantage is not universal: GLM-4.5-Air reproduces it, Qwen3-32B does not, because that model rejects a quarter of proportional compromises.
 
-Two measurement results follow from the same data. A posterior self-report recovers only two thirds of the agreements, and it does so unevenly: the proposer reports 76\%, the responder 97\%. And a regex parser from an earlier pilot is closer to the first-agreement round than a late-window adjudicator is, which is a reminder that the instrument, not the agents, decides what a study reports. We recommend that work on LLM bargaining report an executed outcome where one exists, and name the crediting convention where one does not.
+Two measurement results follow from the same data. A posterior self-report recovers only two thirds of the agreements, and it does so unevenly: the proposer reports 76\%, the responder 97\%. And a regex parser from an earlier pilot is closer to the first-agreement round than a late-window adjudicator is, which is a reminder that the instrument, not the agents, decides what a study reports. Giving free dialogue a binding execution hook lifts the deal rate only to 42\%, at round 6.2 and an efficiency of 0.26, which is why we read the problem as structural rather than as a failure of compliance. We recommend that work on LLM bargaining report an executed outcome where one exists, and name the crediting convention where one does not.
 
 \section*{Data and code availability}
 All prompts, transcripts, episode-level results and analysis scripts are available at \url{https://doi.org/10.5281/zenodo.23599377} (version 1.0.0; concept DOI \url{https://doi.org/10.5281/zenodo.23599376}). The experiment is fully reproducible from the released scripts with an API key.

@@ -194,6 +194,15 @@ PROTOCOL_RULES = {
         "- You may write anything: propose splits, argue, accept, or reject.\n"
         "- There is no required format.\n"
     ),
+    "free_text_exec": (
+        "Communication protocol: free-form dialogue with an execution hook.\n"
+        "- Each round you and the other agent exchange one message, in free text.\n"
+        "- To close the negotiation, use a formal line. To propose: PROPOSE: A=<int>, B=<int>\n"
+        "  To accept the other agent's most recent proposal: ACCEPT: A=<int>, B=<int>\n"
+        "- An ACCEPT is binding: if it matches the other agent's most recent proposal,\n"
+        "  the deal is executed immediately at that split and the episode ends.\n"
+        "- Plain phrases such as 'I accept' are not binding; only the formal line is.\n"
+    ),
     "alternating_offers": (
         "Communication protocol: alternating offers.\n"
         "- Odd rounds: Agent A proposes a split. Even rounds: Agent B proposes.\n"
@@ -378,6 +387,52 @@ def run_free_text(a, b, R, T, ep):
             ep.legacy_round = r
     return ep
 
+
+
+_PROF = re.compile(r"PROPOSE\s*:\s*A\s*=\s*(\d+)\s*,\s*B\s*=\s*(\d+)", re.I)
+_ACCF = re.compile(r"ACCEPT\s*:\s*A\s*=\s*(\d+)\s*,\s*B\s*=\s*(\d+)", re.I)
+
+
+def run_free_text_exec(a, b, R, T, ep):
+    """Free dialogue with an execution hook: a formal ACCEPT of a formal PROPOSE executes."""
+    pending = None
+    last_b = ""
+    for r in range(1, T + 1):
+        P = pie(R, r)
+        if last_b:
+            prompt_a = (f"Round {r}. The pie this round is {P} points. Agent B says: \"{last_b}\"\n"
+                        f"Reply to Agent B. To close, use PROPOSE: / ACCEPT: with A= and B=.")
+        else:
+            prompt_a = (f"Round {r}. The pie this round is {P} points. Say anything you want to the other agent. "
+                        f"To close, use PROPOSE: A=<int>, B=<int> or ACCEPT: A=<int>, B=<int>.")
+        ma = a.call(prompt_a)
+        mb = b.call(f"Round {r}. The pie this round is {P} points. Agent A says: \"{ma}\"\n"
+                    f"Reply to Agent A. To close, use PROPOSE: / ACCEPT: with A= and B=.")
+        last_b = mb
+        pa, aa = _PROF.search(ma), _ACCF.search(ma)
+        pb, ab = _PROF.search(mb), _ACCF.search(mb)
+        deal = None
+        if aa:
+            split = (int(aa.group(1)), int(aa.group(2)))
+            if pending == split:
+                deal = split
+        if deal is None and ab:
+            split = (int(ab.group(1)), int(ab.group(2)))
+            if pending == split:
+                deal = split
+        if deal is None:
+            if pa:
+                pending = (int(pa.group(1)), int(pa.group(2)))
+            if pb:
+                pending = (int(pb.group(1)), int(pb.group(2)))
+        ep.log(round=r, a=ma, b=mb, pending=pending, deal=deal)
+        ep.rounds = r
+        if deal and sum(deal) <= P:
+            ep.native_split = deal
+            a.call(f"Deal executed at your formal ACCEPT: you get {deal[0]}, the other agent gets {deal[1]}.")
+            b.call(f"Deal executed at the formal ACCEPT: you get {deal[1]}, the other agent gets {deal[0]}.")
+            break
+    return ep
 
 def run_alternating(a, b, R, T, ep):
     for r in range(1, T + 1):
@@ -677,6 +732,8 @@ def play_episode(model_key, protocol, R, T, trial, k, K, prior, temperature,
     try:
         if protocol == "free_text":
             run_free_text(a, b, R, T, ep)
+        elif protocol == "free_text_exec":
+            run_free_text_exec(a, b, R, T, ep)
         elif protocol == "alternating_offers":
             run_alternating(a, b, R, T, ep)
         elif protocol == "sealed_bid":

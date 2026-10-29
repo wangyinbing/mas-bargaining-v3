@@ -24,6 +24,15 @@ verdict was confirmed in each.
 
 Details: `v3/FIXES.md`.
 
+
+## Added in v1.1.0 (second revision): execution-hook arm
+
+`free_text_exec` — free dialogue with a binding formal line (`PROPOSE: A=.., B=..` /
+`ACCEPT: A=.., B=..`); a matching ACCEPT executes immediately. 300 episodes, 0 errors:
+deal rate 0.42, mean round 6.3 among deals, efficiency 0.262 (flash 0.573 / 0.351,
+pro 0.273 / 0.174). All 300 episodes used the formal syntax at least once, so the shortfall
+is not a compliance failure. Data: `output_v3/free_exec/`.
+
 # SPB: code and data
 
 Code and data for the manuscript **"SPB: A Surplus-Preserving Bargaining Protocol for
