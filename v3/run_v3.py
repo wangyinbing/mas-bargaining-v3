@@ -203,6 +203,13 @@ PROTOCOL_RULES = {
         "  the deal is executed immediately at that split and the episode ends.\n"
         "- Plain phrases such as 'I accept' are not binding; only the formal line is.\n"
     ),
+    "free_text_loose": (
+        "Communication protocol: free-form dialogue with a forgiving execution hook.\n"
+        "- Each round you and the other agent exchange one message, in free text.\n"
+        "- If you accept a split, say so explicitly and state it (e.g. 'I accept 5-5').\n"
+        "- The system executes a deal as soon as one agent clearly accepts a split that the\n"
+        "  other agent has just proposed. No special syntax is required.\n"
+    ),
     "alternating_offers": (
         "Communication protocol: alternating offers.\n"
         "- Odd rounds: Agent A proposes a split. Even rounds: Agent B proposes.\n"
@@ -431,6 +438,59 @@ def run_free_text_exec(a, b, R, T, ep):
             ep.native_split = deal
             a.call(f"Deal executed at your formal ACCEPT: you get {deal[0]}, the other agent gets {deal[1]}.")
             b.call(f"Deal executed at the formal ACCEPT: you get {deal[1]}, the other agent gets {deal[0]}.")
+            break
+    return ep
+
+
+def run_free_text_loose(a, b, R, T, ep):
+    """Free dialogue with a forgiving execution hook.
+
+    A deal executes when one agent states acceptance and names a split that the other
+    agent proposed in the previous turn (or when both accept the same split in a round).
+    No special syntax is required: ordinary 'I accept 5-5' closes the negotiation.
+    """
+    pending = None
+    last_b = ""
+    for r in range(1, T + 1):
+        P = pie(R, r)
+        if last_b:
+            prompt_a = (f"Round {r}. The pie this round is {P} points. Agent B says: \"{last_b}\"\n"
+                        f"Reply to Agent B. If you accept a split, say so explicitly and state it.")
+        else:
+            prompt_a = (f"Round {r}. The pie this round is {P} points. Say anything you want to the other agent. "
+                        f"If you accept a split, say so explicitly and state it.")
+        ma = a.call(prompt_a)
+        mb = b.call(f"Round {r}. The pie this round is {P} points. Agent A says: \"{ma}\"\n"
+                    f"Reply to Agent A. If you accept a split, say so explicitly and state it.")
+        last_b = mb
+
+        deal = None
+        # 1) one side accepts the pending proposal
+        for msg in (ma, mb):
+            sp = _splits_in(msg)
+            if _has_accept(msg) and pending is not None and pending in sp:
+                deal = pending
+                break
+        # 2) both sides accept the same split within the round
+        if deal is None:
+            sa, sb = _splits_in(ma), _splits_in(mb)
+            if _has_accept(ma) and _has_accept(mb):
+                common = [x for x in sa if x in sb]
+                if common:
+                    deal = common[0]
+
+        # update the pending proposal from this round's text
+        for msg in (ma, mb):
+            sp = [x for x in _splits_in(msg) if 0 < sum(x) <= P]
+            if sp:
+                pending = sp[-1]
+
+        ep.log(round=r, a=ma, b=mb, pending=pending, deal=deal)
+        ep.rounds = r
+        if deal is not None and 0 < sum(deal) <= P:
+            ep.native_split = deal
+            a.call(f"Deal executed: you get {deal[0]}, the other agent gets {deal[1]}.")
+            b.call(f"Deal executed: you get {deal[1]}, the other agent gets {deal[0]}.")
             break
     return ep
 
@@ -734,6 +794,8 @@ def play_episode(model_key, protocol, R, T, trial, k, K, prior, temperature,
             run_free_text(a, b, R, T, ep)
         elif protocol == "free_text_exec":
             run_free_text_exec(a, b, R, T, ep)
+        elif protocol == "free_text_loose":
+            run_free_text_loose(a, b, R, T, ep)
         elif protocol == "alternating_offers":
             run_alternating(a, b, R, T, ep)
         elif protocol == "sealed_bid":
